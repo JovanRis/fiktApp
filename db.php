@@ -20,10 +20,21 @@ class DB
         $this->conn->close();
     }
     
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
+    //////////////////////////////Student Part/////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    
     function loginStudent($user,$pwhash)
     {
         $sql = "SELECT *
-                FROM `Students`
+                FROM `Student`
                 WHERE `Username` LIKE '".$user."'";
                 
         $result = $this->conn->query($sql);
@@ -42,7 +53,7 @@ class DB
     
     function registerStudent($user,$pwhash)
     {
-        $sql = "INSERT INTO `Students`(`Username`, `pwHash`) VALUES ('".$user."','".$pwhash."')";
+        $sql = "INSERT INTO `Student`(`Username`, `pwHash`) VALUES ('".$user."','".$pwhash."')";
         echo $sql;
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -51,6 +62,51 @@ class DB
             return false;
         }
     }
+    
+    
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
+    //////////////////////////////Company Part/////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+    
+    
+    
+        function loginCompany($user,$pwhash)
+    {
+        $sql = "SELECT *
+                FROM `Company`
+                WHERE `CompanyName` LIKE '".$user."'";
+                
+        $result = $this->conn->query($sql);
+        $r = $result->fetch_assoc();
+
+        mysql_free_result($result);
+        
+        if($user == $r['CompanyName'] && $pwhash == $r['CompanyPass'])
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
+    
+        function registerCompany($user,$pwhash,$details)
+    {
+        $sql = "INSERT INTO `Company`(`CompanyName`, `CompanyPass`, `CompanyDetails`) VALUES ('".$user."','".$pwhash."','".$details."')";
+        echo $sql;
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+    
+    
 }
 
 
