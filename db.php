@@ -20,7 +20,7 @@ class DB
         $this->conn->close();
     }
     
-    function login($user,$pwhash)
+    function loginStudent($user,$pwhash)
     {
         $sql = "SELECT *
                 FROM `Students`
@@ -40,7 +40,7 @@ class DB
         }
     }
     
-    function register($user,$pwhash)
+    function registerStudent($user,$pwhash)
     {
         $sql = "INSERT INTO `Students`(`Username`, `pwHash`) VALUES ('".$user."','".$pwhash."')";
         echo $sql;

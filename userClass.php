@@ -17,7 +17,7 @@ class User
     
     function login()
     {
-        $ret = $this->db->login($this->user,$this->pass);
+        $ret = $this->db->loginStudent($this->user,$this->pass);
         if($ret == true)
         {
             echo "User exists";
@@ -29,7 +29,7 @@ class User
     
     function register()
     {
-        $ret = $this->db->register($this->user,$this->pass);
+        $ret = $this->db->registerStudent($this->user,$this->pass);
         
         if($ret == true)
         {
