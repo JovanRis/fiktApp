@@ -40,6 +40,19 @@ class DB
             return false;
         }
     }
+    
+    function register($user,$pwhash)
+    {
+        $sql = "INSERT INTO `Students`(`Username`, `pwHash`) VALUES ('".$user."','".$pwhash."'";
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+            return false;
+        }
+                
+    }
 }
 
 
