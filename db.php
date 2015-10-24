@@ -17,7 +17,6 @@ class DB
     
     public function __destruct()
     {
-        echo "destroying db object";
         $this->conn->close();
     }
     
@@ -43,15 +42,14 @@ class DB
     
     function register($user,$pwhash)
     {
-        $sql = "INSERT INTO `Students`(`Username`, `pwHash`) VALUES ('".$user."','".$pwhash."'";
-        if ($conn->query($sql) === TRUE) {
-            echo "New record created successfully";
+        $sql = "INSERT INTO `Students`(`Username`, `pwHash`) VALUES ('".$user."','".$pwhash."')";
+        echo $sql;
+        if ($this->conn->query($sql) === TRUE) {
             return true;
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
             return false;
         }
-                
     }
 }
 

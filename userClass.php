@@ -25,6 +25,20 @@ class User
         else {
             echo "User does not exist";
         }
+    }
+    
+    function register()
+    {
+        $ret = $this->db->register($this->user,$this->pass);
+        
+        if($ret == true)
+        {
+            echo "<br> user registered successfully";
+        }
+        else
+        {
+            echo "<br> registration failed";
+        }
         
     }
 }
