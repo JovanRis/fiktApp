@@ -15,6 +15,12 @@ class DB
 
     }
     
+    public function __destruct()
+    {
+        echo "destroying db object";
+        $this->conn->close();
+    }
+    
     function login($user,$pwhash)
     {
         $sql = "SELECT *
