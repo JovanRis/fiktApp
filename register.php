@@ -23,7 +23,7 @@
             if($radioCheck == "student")
             {
                  $userObj = new User($username, $password);
-                 if($userObj-> register($user,$pwhash,$firstname, $lastname, $email))
+                 if($userObj-> register($username,$password,$firstname, $lastname, $email))
                  {
                       echo "User register successful";
                  }
@@ -36,7 +36,7 @@
             elseif ($radioCheck == "company") 
             {
                 $companyObj = new Company ($username, $password);
-                if($companyObj-> register($user,$pwhash,"deteils go here",$email,"imgUrl goes here"))
+                if($companyObj-> register($username,$password,"deteils go here",$email,"imgUrl goes here"))
                 {
                       echo "Company register successful";
                  }
