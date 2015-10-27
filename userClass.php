@@ -20,10 +20,10 @@ class User
         $ret = $this->db->loginStudent($this->user,$this->pass);
         if($ret == true)
         {
-            echo "User exists";
+            return true;
         }
         else {
-            echo "User does not exist";
+            return false;
         }
     }
     
@@ -33,11 +33,11 @@ class User
         
         if($ret == true)
         {
-            echo "<br> user registered successfully";
+            return true;
         }
         else
         {
-            echo "<br> registration failed";
+            return false;
         }
         
     }

@@ -20,24 +20,24 @@ class Company
         $ret = $this->db->loginCompany($this->user,$this->pass);
         if($ret == true)
         {
-            echo "User exists";
+            return true;
         }
         else {
-            echo "User does not exist";
+            return false;
         }
     }
     
-    function register()
+    function register($user,$pwhash,$details,$email,$imgUrl)
     {
-        $ret = $this->db->registerStudent($this->user,$this->pass,"company details go here");
+        $ret = $this->db->registerCompany($user,$pwhash,$details,$email,$imgUrl);
         
         if($ret == true)
         {
-            echo "<br> user registered successfully";
+            return true;
         }
         else
         {
-            echo "<br> registration failed";
+            return false;
         }
         
     }
