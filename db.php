@@ -77,11 +77,13 @@ class DB
     {
         $sql = "SELECT *
                 FROM `Company`
-                WHERE `CompanyName` LIKE '".$user."'";
+                WHERE `CompanyName` = '".$user."'";
+
                 
         $result = $this->conn->query($sql);
         $r = $result->fetch_assoc();
-
+        echo $pwhash;
+        print_r($r);
         mysql_free_result($result);
         
         if($user == $r['CompanyName'] && $pwhash == $r['CompanyPass'])

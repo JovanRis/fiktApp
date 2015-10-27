@@ -33,9 +33,9 @@
         }
         elseif ($radioCheck == "company") 
         {
-            $companyObj = new Company($user);
+            $companyObj = new Company($user,$pass);
             
-            if($companyObj->login($user,$pass))
+            if($companyObj->login())
             {
                 echo "login successful";
             }

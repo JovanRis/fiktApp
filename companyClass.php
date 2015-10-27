@@ -29,7 +29,7 @@ class Company
     
     function register($user,$pwhash,$details,$email,$imgUrl)
     {
-        $ret = $this->db->registerCompany($user,$pwhash,$details,$email,$imgUrl);
+        $ret = $this->db->registerCompany($this->user,$this->pass,$details,$email,$imgUrl);
         
         if($ret == true)
         {
