@@ -1,6 +1,6 @@
 <?php
 
-require 'db.php';
+require_once 'db.php';
 
 class User
 {
@@ -27,10 +27,9 @@ class User
         }
     }
     
-    
-    function register($user,$pwhash,$firstname, $lastname, $email)
+    function register()
     {
-        $ret = $this->db->registerStudent($user,$pwhash,$firstname, $lastname, $email);
+        $ret = $this->db->registerStudent($this->user,$this->pass);
         
         if($ret == true)
         {

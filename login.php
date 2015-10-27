@@ -1,7 +1,10 @@
   <?php       
         include("header.php"); 
-        require 'userClass.php';
-        require 'companyClass.php';
+        
+        require_once 'userClass.php';
+        
+        require_once 'companyClass.php';
+        
      ?>
 
 
