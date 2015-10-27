@@ -53,7 +53,7 @@ class DB
     
     function registerStudent($user,$pwhash,$firstname, $lastname, $email)
     {
-        $sql = "INSERT INTO `Student`(`Username`, `pwHash`, `firstname`, `lastname`, `email`) VALUES ('".$user."','".$pwhash."','".$firsname."','".$lastname."','".$email."')";
+        $sql = "INSERT INTO `Student`(`Username`, `pwHash`, `firstname`, `lastname`, `email`) VALUES ('".$user."','".$pwhash."','".$firstname."','".$lastname."','".$email."')";
         echo $sql;
         if ($this->conn->query($sql) === TRUE) {
             return true;
