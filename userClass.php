@@ -27,9 +27,10 @@ class User
         }
     }
     
-    function register()
+    
+    function register($user,$pwhash,$firstname, $lastname, $email)
     {
-        $ret = $this->db->registerStudent($this->user,$this->pass);
+        $ret = $this->db->registerStudent($user,$pwhash,$firstname, $lastname, $email);
         
         if($ret == true)
         {

@@ -27,9 +27,9 @@ class Company
         }
     }
     
-    function register()
+    function register($user,$pwhash,$details,$email,$imgUrl)
     {
-        $ret = $this->db->registerStudent($this->user,$this->pass,"company details go here");
+        $ret = $this->db->registerStudent($user,$pwhash,$details,$email,$imgUrl);
         
         if($ret == true)
         {

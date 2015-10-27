@@ -51,9 +51,9 @@ class DB
         }
     }
     
-    function registerStudent($user,$pwhash)
+    function registerStudent($user,$pwhash,$firstname, $lastname, $email)
     {
-        $sql = "INSERT INTO `Student`(`Username`, `pwHash`) VALUES ('".$user."','".$pwhash."')";
+        $sql = "INSERT INTO `Student`(`Username`, `pwHash`, `firstname`, `lastname`, `email`) VALUES ('".$user."','".$pwhash."','".$firsname."','".$lastname."','".$email."')";
         echo $sql;
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -94,9 +94,9 @@ class DB
     }
     
     
-        function registerCompany($user,$pwhash,$details)
+        function registerCompany($user,$pwhash,$details,$email,$imgUrl)
     {
-        $sql = "INSERT INTO `Company`(`CompanyName`, `CompanyPass`, `CompanyDetails`) VALUES ('".$user."','".$pwhash."','".$details."')";
+        $sql = "INSERT INTO `Company`(`CompanyName`, `CompanyPass`, `CompanyDetails`, `email`, `imgUrl`) VALUES ('".$user."','".$pwhash."','".$details."','".$email."','".$imgUrl."')";
         echo $sql;
         if ($this->conn->query($sql) === TRUE) {
             return true;
