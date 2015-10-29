@@ -14,7 +14,7 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p class="site-title"><a href="home.php">DEMOLA-FIKT </a></p>
+                    <p class="site-title"><a href="index.php">DEMOLA-FIKT </a></p>
                 </div>
               <div class="float-right">
                     <section id="login">
@@ -35,7 +35,7 @@
                 <section class="navigation" data-role="navbar">
                     <nav>
                         <ul id="menu">
-                            <li><a href="home.php">Home</a></li>
+                            <li><a href="index.php">Home</a></li>
                             
                         </ul>
                     </nav>
