@@ -17,31 +17,27 @@
         $radioCheck = $_POST['logtype'];
         $user = $_POST['username'];
         $pass = $_POST['password'];
+        $userObj = new User($user,$pass);
+        $companyObj = new Company($user,$pass);
         
-        if($radioCheck == "student")
+        $loginSuccess = false;
+        
+        if($userObj->login())
         {
-            $userObj = new User($user,$pass);
-            
-            if($userObj->login($user,$pass))
-            {
-                echo "login successful";
-            }
-            else {
-                echo "wrong username or password";
-            }
-            
+            $loginSuccess = true;
         }
-        elseif ($radioCheck == "company") 
+        
+        if($companyObj->login())
         {
-            $companyObj = new Company($user,$pass);
-            
-            if($companyObj->login())
-            {
-                echo "login successful";
-            }
-            else {
-                echo "wrong username or password";
-            }
+            $loginSuccess = true;
+        }
+        
+        if($loginSuccess == true)
+        {
+            echo "login successfull";
+        }
+        else {
+            echo "wrong username or password";
         }
     }
     else {
@@ -50,12 +46,6 @@
             <fieldset>
             <legend>Log on</legend>
             <ol>
-                <li>
-                    <input type='radio' name='logtype' value='student' checked>Student
-                    <input type='radio' name='logtype' value='company'>Company
-                    <input type='radio' name='logtype' value='university'>University
-                    
-                </li>
                 <li>
                     <label for='username'>Username:</label> 
                     <input type='text' name='username' value='' id='username' />
