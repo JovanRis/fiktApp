@@ -54,7 +54,6 @@ class DB
     function registerStudent($user,$pwhash,$firstname, $lastname, $email)
     {
         $sql = "INSERT INTO `Student`(`Username`, `pwHash`, `firstname`, `lastname`, `email`) VALUES ('".$user."','".$pwhash."','".$firstname."','".$lastname."','".$email."')";
-        echo $sql;
         if ($this->conn->query($sql) === TRUE) {
             return true;
         } else {
@@ -82,7 +81,6 @@ class DB
                 
         $result = $this->conn->query($sql);
         $r = $result->fetch_assoc();
-        echo $pwhash;
         print_r($r);
         mysql_free_result($result);
         
@@ -99,7 +97,6 @@ class DB
         function registerCompany($user,$pwhash,$details,$email,$imgUrl)
     {
         $sql = "INSERT INTO `Company`(`CompanyName`, `CompanyPass`, `CompanyDetails`, `email`, `imgUrl`) VALUES ('".$user."','".$pwhash."','".$details."','".$email."','".$imgUrl."')";
-        echo $sql;
         if ($this->conn->query($sql) === TRUE) {
             return true;
         } else {
