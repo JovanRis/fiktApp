@@ -6,6 +6,9 @@
         <title>Demola-FIKT</title>
         <link href="Site.css" rel="stylesheet" type="text/css" />
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <?php 
+        session_start();
+        ?>
 
 
     </head>
