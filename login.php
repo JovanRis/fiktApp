@@ -16,8 +16,8 @@
         $radioCheck = $_POST['logtype'];
         $user = $_POST['username'];
         $pass = $_POST['password'];
-        $userObj = new User($user,$pass);
-        $companyObj = new Company($user,$pass);
+        $userObj = new User($user,md5($pass));
+        $companyObj = new Company($user,md5($pass));
         
         $loginSuccess = false;
         
@@ -37,6 +37,7 @@
             $_SESSION['userType'] = 'company';
             $_SESSION['username'] = $user;
             $_SESSION['companyID'] = $companyID;
+            $_SESSION['pwHash'] = $companyObj->getPwHash();
         }
         
         
