@@ -43,24 +43,26 @@
         }
     }
     else {
-        echo "<form id='loginForm' action='login.php' method='POST'>
+        echo "<div class = 'container'>
+        <form id='loginForm' role='form' action='login.php' method='POST'>
         
             <fieldset>
             <legend>Log on</legend>
             <ol>
                 <li>
                     <label for='username'>Username:</label> 
-                    <input type='text' name='username' value='' id='username' />
+                    <input type='text' class='form-control' name='username' value='' id='username' />
                 </li>
                 <li>
                     <label for='password'>Password:</label>
-                    <input type='password' name='password' value='' id='password' />
+                    <input type='password' class='form-control' name='password' value='' id='password' />
                 </li>
             </ol>
             <input type='submit' name='submit' value='Login' />
             
         </fieldset>
-        </form>";
+        </form>
+        </div>";
     }
     ?>
     
