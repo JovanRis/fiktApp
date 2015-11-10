@@ -65,26 +65,26 @@
                 </li>
                   <li>
                     <label for='firstname'>Firstname:</label> 
-                    <input type='text' name='firstname' value='' id='firstname' />
+                    <input type='text' class='form-control' name='firstname' value='' id='firstname' />
                 </li>
                  <li>
                     <label for='lastname'>Lastname:</label> 
-                    <input type='text' name='lastname' value='' id='lastname' />
+                    <input type='text' class='form-control' name='lastname' value='' id='lastname' />
                 </li>
                  <li>
                     <label for='email'>Email:</label> 
-                    <input type='text' name='email' value='' id='email' />
+                    <input type='text' class='form-control' name='email' value='' id='email' />
                 </li>
                     <li>
                         <label for='username'>Username:</label> 
-                        <input type='text' name='username' value='' id='username' />
+                        <input type='text' class='form-control' name='username' value='' id='username' />
                     </li>
                     <li>
                         <label for='password'>Password:</label>
-                        <input type='password' name='password' value='' id='password' />
+                        <input type='password' class='form-control' name='password' value='' id='password' />
                     </li>
                 </ol>
-                <input type='submit' name='submit' value='Register' />
+                <input type='submit' class='btn btn-default' name='submit' value='Register' />
                
             </fieldset>
         </form>";

@@ -1,7 +1,6 @@
 html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+   height: 100%;
+	margin-bottom: 0.01em;
 }
 
 body {
@@ -14,21 +13,10 @@ body {
     height: 100%;
 }
 
-a:link, a:visited,
-a:active, a:hover {
-    color:#E2E2E2;
-    outline: none;
-    padding-left: 5px;
-    padding-right: 5px;
-    text-decoration: underline;
-}
 
-a:hover {
-    background-color: #E2E2E2;
-}
 
 header{
-    background-color: #E2E2E2;
+    background-color: white;
 }
 
 header, footer, hgroup
@@ -64,7 +52,7 @@ nav, section {
 	padding: 30px 0px 50px;
     height: 100%;
     min-height: 100%;
-    margin-left: 30px;
+    margin-left: 15%;
     max-width: 600px;
 }
 
@@ -84,23 +72,27 @@ footer .footer-wrapper {
     padding:  3px 20px;
 }
 
-
-/* site title
+/*site title
 ----------------------------------------------------------*/
-.site-title {
-    color: rgb(7, 101, 3);
-    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
-    font-size: 4em;
-    margin: 20px 0;
+/*header h1.site-title a {
+    
+
+    background: url(fict_logo.png); 
+    width:147;
+    height:67;
+    margin-left:27px;
 }
 
 .site-title a, .site-title a:hover, .site-title a:active {
-    background: none;
-    color: rgb(7, 101, 3);
+ 
+    color: #449d44;
     outline: none;
     text-decoration: none;
+}*/
+.site-logo img {
+    margin-left: 24%;
+    margin-top:5%;
 }
-
 
 /* login
 ----------------------------------------------------------*/
@@ -112,19 +104,14 @@ footer .footer-wrapper {
 }
 
     #login a {
-        background-color: rgb(7, 101, 3);
+        background-color: #5cb85c;
         margin-left: 10px;
         margin-right: 3px;
         padding: 3px 4px;
         text-decoration: none;
     }
 
-    #login a.username {
-        background: none;
-        margin-left: 0px;
-        text-decoration: underline;
-    }
-
+ 
     #login ul {
         margin: 0;
     }
@@ -168,8 +155,8 @@ ul#menu {
 ----------------------------------------------------------*/
 
 /* Navigation */
-.navigation {
-    border-top: 5px solid rgb(7, 101, 3);
+/*.navigation {
+    border-top: 5px solid rgb(226, 226, 226);
     
     
     margin: 0;
@@ -178,13 +165,14 @@ ul#menu {
     display: table;
     width: 100%;
     
-    background-color: rgb(7, 101, 3);
+    background-color: white;
   
 }
 .navigation a {
+    
     color: #E2E2E2;
 }
-
+*/
 /* page titles */
 hgroup.title {
     margin-bottom: 10px;
@@ -247,7 +235,7 @@ fieldset {
     fieldset input[type="password"] {
         border: 1px solid #e2e2e2;
         color: #333;
-        font-size: 1.2em;
+        font-size: 1em;
         margin: 5px 0 6px 0;
         padding: 5px;
         width: 300px;
@@ -259,12 +247,11 @@ fieldset {
         }
 
     fieldset input[type="submit"] {
-        background-color: #d3dce0;
-        border: solid 1px #787878;
+        background-color: rgb(92, 184, 92);
         cursor: pointer;
-        font-size: 1.2em;
-        font-weight: 600;
+        font-size: 1em;
         padding: 7px;
+        color: white;
     }
 
 /* ajax login/registration dialog */
