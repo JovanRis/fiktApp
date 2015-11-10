@@ -26,17 +26,20 @@
         {
             $loginSuccess = true;
             $_SESSION['userType'] = 'student';
+            $_SESSION['username'] = $user;
         }
         
         if($companyObj->login())
         {
             $loginSuccess = true;
             $_SESSION['userType'] = 'company';
+            $_SESSION['username'] = $user;
         }
         
         if($loginSuccess == true)
         {
             echo "login successfull <br> logged in as: ".$_SESSION['userType'];
+            header("Refresh:2; url=index.php");
         }
         else {
             echo "wrong username or password";
