@@ -22,19 +22,22 @@
         
         $loginSuccess = false;
         
+        
         if($userObj->login())
         {
             $loginSuccess = true;
+            $_SESSION['userType'] = 'student';
         }
         
         if($companyObj->login())
         {
             $loginSuccess = true;
+            $_SESSION['userType'] = 'company';
         }
         
         if($loginSuccess == true)
         {
-            echo "login successfull";
+            echo "login successfull <br> logged in as: ".$_SESSION['userType'];
         }
         else {
             echo "wrong username or password";
