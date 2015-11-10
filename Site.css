@@ -46,14 +46,11 @@ nav, section {
 }
 
 #main {
-    clear: both;
-    margin-top:  0;
-    overflow:auto;
+   
 	padding: 30px 0px 50px;
     height: 100%;
-    min-height: 100%;
-    margin-left: 15%;
-    max-width: 600px;
+    margin: 0 auto;
+    width: 50%;
 }
 
    
@@ -99,7 +96,7 @@ footer .footer-wrapper {
  #login {
     display: block;
 
-    margin: 7px 0 12px;
+    margin:50px 4px 0px 5px;
     text-align: right;
 }
 
