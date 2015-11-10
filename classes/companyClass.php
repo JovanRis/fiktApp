@@ -18,13 +18,8 @@ class Company
     function login()
     {
         $ret = $this->db->loginCompany($this->user,$this->pass);
-        if($ret == true)
-        {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return $ret;
+
     }
     
     function register($user,$pwhash,$details,$email,$imgUrl)

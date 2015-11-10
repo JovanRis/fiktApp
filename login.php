@@ -22,19 +22,23 @@
         $loginSuccess = false;
         
         
-        if($userObj->login())
+        if($userObj->login() > -1)
         {
             $loginSuccess = true;
             $_SESSION['userType'] = 'student';
             $_SESSION['username'] = $user;
         }
         
-        if($companyObj->login())
+        $companyID = $companyObj->login();
+
+        if($companyID > -1)
         {
             $loginSuccess = true;
             $_SESSION['userType'] = 'company';
             $_SESSION['username'] = $user;
+            $_SESSION['companyID'] = $companyID;
         }
+        
         
         if($loginSuccess == true)
         {

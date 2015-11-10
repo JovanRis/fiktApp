@@ -41,10 +41,10 @@ class DB
         $r = $result->fetch_assoc();
 
         mysql_free_result($result);
-        
+
         if($user == $r['Username'] && $pwhash == $r['pwHash'])
         {
-            return $r['pk_id'];
+            return $r['id_pk'];
         }
         else {
             return -1;
@@ -72,7 +72,7 @@ class DB
     
     
     
-        function loginCompany($user,$pwhash)
+    function loginCompany($user,$pwhash)
     {
         $sql = "SELECT *
                 FROM `Company`
@@ -81,12 +81,14 @@ class DB
                 
         $result = $this->conn->query($sql);
         $r = $result->fetch_assoc();
-        print_r($r);
+
         mysql_free_result($result);
-        
+
+
         if($user == $r['CompanyName'] && $pwhash == $r['CompanyPass'])
         {
-            return $r['pk_id'];
+            return $r['id_pk'];
+            
         }
         else {
             return -1;

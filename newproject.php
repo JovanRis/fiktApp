@@ -8,14 +8,13 @@
        <?php 
        if(isset($_POST['submit']))
        {
-            $companyObj = new Company($user,$pass);
+             $companyObj = new Company($user,$pass);
             
-             $radioCheck = $_POST['projecttype'];
+             $category = $_POST['projecttype'];
              $projectname = $_POST['projectname'];
-             $lastname = $_POST['projectdescription'];
-             //$companyID = $_POST['email'];
+             $discription = $_POST['projectdescription'];
              
-            if($userObj-> register($username,$password,$firstname, $lastname, $email))
+            if($companyObj->createProject($projectName,$category,$discription,$_SESSION['companyID']))
              {
                   echo "Project added successfuly";
              }
@@ -24,7 +23,7 @@
                   echo "Project adding error";
              }
         }
-        //else
+        else
         { 
         echo"<div class='col-md-4'>
                <div class='btn-group-vertical'>
