@@ -44,10 +44,10 @@ class DB
         
         if($user == $r['Username'] && $pwhash == $r['pwHash'])
         {
-            return true;
+            return $r['pk_id'];
         }
         else {
-            return false;
+            return -1;
         }
     }
     
@@ -86,10 +86,10 @@ class DB
         
         if($user == $r['CompanyName'] && $pwhash == $r['CompanyPass'])
         {
-            return true;
+            return $r['pk_id'];
         }
         else {
-            return false;
+            return -1;
         }
     }
     
