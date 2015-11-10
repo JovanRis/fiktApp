@@ -18,13 +18,7 @@ class User
     function login()
     {
         $ret = $this->db->loginStudent($this->user,$this->pass);
-        if($ret == true)
-        {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return $ret;
     }
     
     function register($user,$pass,$firstname, $lastname, $email)

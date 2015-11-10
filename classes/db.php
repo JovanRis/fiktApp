@@ -41,13 +41,13 @@ class DB
         $r = $result->fetch_assoc();
 
         mysql_free_result($result);
-        
+
         if($user == $r['Username'] && $pwhash == $r['pwHash'])
         {
-            return true;
+            return $r['id_pk'];
         }
         else {
-            return false;
+            return -1;
         }
     }
     
@@ -72,7 +72,7 @@ class DB
     
     
     
-        function loginCompany($user,$pwhash)
+    function loginCompany($user,$pwhash)
     {
         $sql = "SELECT *
                 FROM `Company`
@@ -81,15 +81,17 @@ class DB
                 
         $result = $this->conn->query($sql);
         $r = $result->fetch_assoc();
-        print_r($r);
+
         mysql_free_result($result);
-        
+
+
         if($user == $r['CompanyName'] && $pwhash == $r['CompanyPass'])
         {
-            return true;
+            return $r['id_pk'];
+            
         }
         else {
-            return false;
+            return -1;
         }
     }
     
@@ -97,6 +99,17 @@ class DB
         function registerCompany($user,$pwhash,$details,$email,$imgUrl)
     {
         $sql = "INSERT INTO `Company`(`CompanyName`, `CompanyPass`, `CompanyDetails`, `email`, `imgUrl`) VALUES ('".$user."','".$pwhash."','".$details."','".$email."','".$imgUrl."')";
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+    
+    function createProject($projectName,$category,$discription,$companyID)
+    {
+        $sql = "INSERT INTO `Project`(`ProjectName`, `Category`, `Discription`, `fk_CompanyID`) VALUES ('".$projectName."','".$category."','".$discription."','".$companyID."')";
         if ($this->conn->query($sql) === TRUE) {
             return true;
         } else {

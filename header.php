@@ -35,9 +35,22 @@
         <div class="col-md-2">
                 <ul id="login">
                 <?php
-               
+                
+                if(isset($_SESSION['username']))
+                {
+                    echo "<li>".$_SESSION['username']." <a href='?logout=true' class='btn btn-success'>Logout</a>  </li>";
+                }
+                else {
                     echo '<li><a href="login.php" class="btn btn-success"><span class="glyphicon glyphicon-user"></span>Login</a></li>' . "\n";
                     echo '<li><a href="register.php" class="btn btn-success">Register</a></li>' . "\n";
+                }
+               
+                if(isset($_GET['logout']))
+                {
+                    $_SESSION = array();
+                    session_destroy();
+                     header("Refresh:2; url=login.php");
+                }
                 
                 ?>
                 </ul>
@@ -67,5 +80,4 @@
          
         </header>
        
-   </body>
-</html>
+
