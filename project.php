@@ -24,7 +24,6 @@
         <div class="col-md-8"></div>
     </div>
 
-</div> <!-- End of outer-wrapper which opens in header.php -->
 <?php 
     include ("footer.php");
  ?>
