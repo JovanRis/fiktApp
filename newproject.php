@@ -7,6 +7,12 @@
    <div id="main">
    
        <?php 
+       if($_SESSION['userType'] != 'company'){
+           echo "Only companies can create projects";
+           header("Refresh:2; url=project.php");
+           die;
+       }
+       
        if(isset($_POST['submit']))
        {
              $companyObj = new Company($_SESSION['username'],$_SESSION['pwHash']);
