@@ -52,7 +52,7 @@
                      
                         <input type='radio' name='projecttype' value='coding' checked>Coding
                         <input type='radio' name='projecttype' value='desing'>Desing
-                        <input type='radio' name='projecttype' value='communication'>Comunications
+                        <input type='radio' name='projecttype' value='communication'>Communication
                         <input type='radio' name='projecttype' value='education'>Education
                        
                     </li>

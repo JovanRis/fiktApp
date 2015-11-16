@@ -118,6 +118,49 @@ class DB
         }
     }
     
+    ///////////////////////////////////////////////////////////////////////////
+    //////////////////////////////Project Part/////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+    
+    function getAllProjects(){
+        $sql = "SELECT * FROM `Project` WHERE 1";
+        
+        $result = $this->conn->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row);
+            }
+        } else {
+            echo "0 results";
+        }
+
+        mysql_free_result($result);
+        
+        return $r;
+    }
+    
+        function getProjectByCategory($Category){
+        $sql = "SELECT * FROM `Project` WHERE `Category` = '".$Category."'";
+        
+        $result = $this->conn->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row);
+            }
+        } else {
+            echo "0 results";
+        }
+
+        mysql_free_result($result);
+        
+        return $r;
+    }
+    
+    
     
 }
 
