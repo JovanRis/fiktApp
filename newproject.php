@@ -51,7 +51,7 @@
                     <li>
                      
                         <input type='radio' name='projecttype' value='coding' checked>Coding
-                        <input type='radio' name='projecttype' value='desing'>Desing
+                        <input type='radio' name='projecttype' value='design'>Desing
                         <input type='radio' name='projecttype' value='communication'>Communication
                         <input type='radio' name='projecttype' value='education'>Education
                        
