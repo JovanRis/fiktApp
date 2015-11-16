@@ -1,8 +1,7 @@
-    <?php       
+   <?php       
         require_once("header.php"); 
         require_once "classes/projectClass.php";
-     ?>
-
+      ?>
 
    <div id="main">
        <div class="col-md-4">
@@ -12,8 +11,8 @@
                 if($_SESSION['userType'] == 'company'){
                     echo htmlspecialchars_decode("<button onclick= &quot; location.href='newproject.php' &quot; type= &quot; button &quot; class= &quot; btn btn-success btn-md &quot; >New Project</button>");
                 }
-                 echo htmlspecialchars_decode("<button onclick= &quot; location.href='newsession.php' &quot; type= &quot; button &quot; class= &quot; btn btn-success btn-md &quot; >New Session</button>");
-                echo htmlspecialchars_decode("
+    
+               echo htmlspecialchars_decode("
                     <button type='button' class='btn btn-success btn-md' onclick= &quot; location.href='?p=coding'; &quot; >Coding</button>
                     <button type='button' class='btn btn-success btn-md' onclick= &quot; location.href='?p=design'; &quot; >Design</button>
                     <button type='button' class='btn btn-success btn-md' onclick= &quot; location.href='?p=communication'; &quot; >Communication</button>
@@ -23,7 +22,9 @@
               ?>
            </div>
         </div>
-        <div class="col-md-8">
+
+
+       <div class="col-md-8">
         
         <?php
         $projectObj = new Project();
@@ -67,17 +68,18 @@
                 
                 <?php
                 $p++;
-            }
-            echo "</div>";
-        ?>    
+                  }
+                 echo "</div>";
+                ?>    
             
-        <?php  
-            }
-        ?>
+                <?php  
+                    }
+                 ?>
         </div>
         
         </div>
     </div>
+ 
 
 <?php 
     include ("footer.php");

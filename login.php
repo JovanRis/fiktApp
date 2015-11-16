@@ -66,7 +66,7 @@
                     <input type='password' class='form-control' name='password' value='' id='password' />
                 </li>
             </ol>
-            <input type='submit' name='submit' value='Login' />
+            <input type='submit' class='btn btn-default' name='submit' value='Login' />
             
         </fieldset>
         </form>
