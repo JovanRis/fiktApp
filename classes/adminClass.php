@@ -11,15 +11,33 @@ class Admin
     public function __construct($user,$pass)
     {
         $this->user=$user;
-        //$this->pass=md5($pass);
-        $this->pass=$pass;  // S: Ovde e bez md5 oti direktno e vnesen pass vo db
+        $this->pass=$pass;
         $this->db = new DB();
+    }
+    
+   public function getPwHash()
+    {
+        return $this->pass;
     }
     
     function login()
     {
         $ret = $this->db->loginAdmin($this->user,$this->pass);
         return $ret;
+    }
+    
+    function createSession($sessionName,$startDate, $endDate)
+    {
+        $ret = $this->db->createSession($sessionName,$startDate, $endDate);
+        
+        if($ret == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     
 }

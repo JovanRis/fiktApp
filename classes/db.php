@@ -176,7 +176,7 @@ function loginAdmin($user,$pwhash)
 
         mysql_free_result($result);
 
-        if($user == $r['Username'] && $pwhash == $r['Password'])
+        if($user == $r['Username'] && $pwhash == md5($r['Password']))
         {
             return $r['id_pk'];
         }
@@ -184,7 +184,24 @@ function loginAdmin($user,$pwhash)
             return -1;
         }
     }
+    
+    
+    ///////////////////////////////////////////////////////////////////////////
+    //////////////////////////////Session Part/////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
 
-
+    function createSession($sessionName,$startDate, $endDate)
+    {
+        echo $sessionName; echo "<br>";
+        echo $startDate; echo "<br>";
+        echo $endDate; echo "<br>";
+        $sql = "INSERT INTO `Session`(`SessionName`, `StartDate`, `EndDate`) VALUES ('".$sessionName."','".$startDate."','".$endDate."')";
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
 }
 ?>

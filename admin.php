@@ -1,5 +1,6 @@
     <?php       
-       require_once("header.php");       
+       require_once("header.php");    
+       require_once("classes/adminClass.php");
      ?>
      
 
@@ -21,7 +22,37 @@
         
         if($_SESSION['isAdminLoggedIn'] == false)
         {
-            echo"<form id='loginForm' role='form' action='login.php' method='POST'>
+            if(isset($_POST['submit']))
+            {
+                $user = $_POST['username'];
+                $pass = $_POST['password'];
+                
+                $adminObj = new Admin($user, md5($pass));
+                
+                $_SESSION['isAdminLoggedIn'] = false;
+                $loginSuccess = false;
+                
+                if($adminObj->login() > -1)
+                {
+                    $loginSuccess = true;
+                    $_SESSION['userType'] = 'admin';
+                    $_SESSION['username'] = $user;
+                    $_SESSION['pwHash'] = $adminObj->getPwHash();
+                    $_SESSION['isAdminLoggedIn'] = true;
+                }
+                
+                if($loginSuccess == true)
+                {
+                    echo "login successfull <br> logged in as: ".$_SESSION['userType'];
+                    header("Refresh:2; url=admin.php");
+                }
+                else {
+                    echo "wrong username or password";
+                }
+            }
+            else
+            {
+            echo"<form id='loginForm' role='form' action='admin.php' method='POST'>
             
                 <fieldset>
                 <legend>Log on</legend>
@@ -39,10 +70,31 @@
                 
             </fieldset>
             </form>
-         <br>";
-       }
+            <br>";
+            }
+        }
        else
        {
+           echo "Admin is logged in";
+           if(isset($_POST['submit']))
+           {
+                 $adminObj = new Admin($_SESSION['username'],$_SESSION['pwHash']);
+                 $sessionName = $_POST['namesession'];
+                 $startDate = $_POST['startdate'];
+                 $endDate = $_POST['enddate'];
+                 
+                
+                if($adminObj->createSession($sessionName,$startDate,$endDate))
+                 {
+                      echo "Session added successfuly";
+                 }
+                 else
+                 {
+                      echo "Session adding error";
+                 }
+            }
+            else
+            {
              echo "<form id='newsession' role='form' action='admin.php' method='POST'>
               <fieldset>
                 <legend>Create Session</legend>
@@ -61,6 +113,7 @@
                 <input type='submit' class='btn btn-default' name='submit' value='Create Session' />
                </fieldset>
              </form>";
+           }
        }
              ?>
         </div>
