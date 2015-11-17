@@ -5,19 +5,23 @@
 
    <div id="main">
    
-   
-       <div class="col-md-4">
-           <div class="btn-group-vertical">
+  
+
+         <div class='col-md-4'>
+           <div class='btn-group-vertical'>
              
-                    <button onclick="location.href='admin.php'" type='button' class='btn btn-success btn-md' id='newsessionbtn' >New Session</button>
+                    <button onclick='location.href='admin.php'' type='button' class='btn btn-success btn-md' id='newsessionbtn' >New Session</button>
 
            </div>
         </div>
         
         
-        <div class="col-md-8">
+        <div class='col-md-8'>
+         <?php 
         
-            <form id='loginForm' role='form' action='login.php' method='POST'>
+        if($_SESSION['isAdminLoggedIn'] == false)
+        {
+            echo"<form id='loginForm' role='form' action='login.php' method='POST'>
             
                 <fieldset>
                 <legend>Log on</legend>
@@ -35,9 +39,11 @@
                 
             </fieldset>
             </form>
-         <br>
-        
-             <form id='newsession' role='form' action='admin.php' method='POST'>
+         <br>";
+       }
+       else
+       {
+             echo "<form id='newsession' role='form' action='admin.php' method='POST'>
               <fieldset>
                 <legend>Create Session</legend>
                 <ol>
@@ -54,7 +60,9 @@
                 </ol>
                 <input type='submit' class='btn btn-default' name='submit' value='Create Session' />
                </fieldset>
-             </form>
+             </form>";
+       }
+             ?>
         </div>
         
         

@@ -3,7 +3,7 @@
         
         require_once 'classes/userClass.php';
         require_once 'classes/companyClass.php';
-        
+        require_once 'classes/adminClass.php';
      ?>
 
 
@@ -18,7 +18,9 @@
         $pass = $_POST['password'];
         $userObj = new User($user,md5($pass));
         $companyObj = new Company($user,md5($pass));
+        $adminObj = new Admin($user, $pass); // S: Ovde e bez md5 oti direktno e vnesen pass vo db
         
+        $_SESSION['isAdminLoggedIn'] = false;
         $loginSuccess = false;
         
         
@@ -40,6 +42,13 @@
             $_SESSION['pwHash'] = $companyObj->getPwHash();
         }
         
+        if($adminObj->login() > -1)
+        {
+            $loginSuccess = true;
+            $_SESSION['userType'] = 'admin';
+            $_SESSION['username'] = $user;
+            $_SESSION['isAdminLoggedIn'] = true;
+        }
         
         if($loginSuccess == true)
         {

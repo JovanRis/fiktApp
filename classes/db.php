@@ -84,7 +84,6 @@ class DB
 
         mysql_free_result($result);
 
-
         if($user == $r['CompanyName'] && $pwhash == $r['CompanyPass'])
         {
             return $r['id_pk'];
@@ -141,7 +140,7 @@ class DB
         return $r;
     }
     
-        function getProjectByCategory($Category){
+    function getProjectByCategory($Category){
         $sql = "SELECT * FROM `Project` WHERE `Category` = '".$Category."'";
         
         $result = $this->conn->query($sql);
@@ -160,11 +159,32 @@ class DB
         return $r;
     }
     
-    
-    
+
+
+    ///////////////////////////////////////////////////////////////////////////
+    //////////////////////////////Admin Part/////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+function loginAdmin($user,$pwhash)
+    {
+        $sql = "SELECT *
+                FROM `Admin`
+                WHERE `Username` LIKE '".$user."'";
+                
+        $result = $this->conn->query($sql);
+        $r = $result->fetch_assoc();
+
+        mysql_free_result($result);
+
+        if($user == $r['Username'] && $pwhash == $r['Password'])
+        {
+            return $r['id_pk'];
+        }
+        else {
+            return -1;
+        }
+    }
+
+
 }
-
-
-
-
 ?>
