@@ -27,7 +27,7 @@
          <div class='col-md-4'>
            <div class='btn-group-vertical'>
              
-                    <button onclick='location.href='admin.php'' type='button' class='btn btn-success btn-md' id='newsessionbtn' >New Session</button>
+                    <button onclick="location.href='admin.php'" type='button' class='btn btn-success btn-md' id='newsessionbtn' >New Session</button>
 
            </div>
         </div>
