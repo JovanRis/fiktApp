@@ -59,7 +59,7 @@
                             </div>
                             <div id="collapse<?php echo $p; ?>" class="panel-collapse collapse">
                                       <div class="panel-body"> <?php echo $projects[$p-1]['Discription'] ?> </div>
-                                      <div class="panel-footer"> <?php echo $projects[$p-1]['fk_CompanyID'] ?> </div>
+                                      <div class="panel-footer"> <?php echo $projects[$p-1]['CompanyName'] ?> </div>
                             </div>
                         </div>
                     </div>
