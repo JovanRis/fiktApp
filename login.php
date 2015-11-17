@@ -3,7 +3,6 @@
         
         require_once 'classes/userClass.php';
         require_once 'classes/companyClass.php';
-        require_once 'classes/adminClass.php';
      ?>
 
 
@@ -29,7 +28,6 @@
         }
         
         $companyID = $companyObj->login();
-
         if($companyID > -1)
         {
             $loginSuccess = true;

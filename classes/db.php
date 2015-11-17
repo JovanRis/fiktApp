@@ -83,7 +83,6 @@ class DB
         $r = $result->fetch_assoc();
 
         mysql_free_result($result);
-
         if($user == $r['CompanyName'] && $pwhash == $r['CompanyPass'])
         {
             return $r['id_pk'];
@@ -122,7 +121,7 @@ class DB
     ///////////////////////////////////////////////////////////////////////////
     
     function getAllProjects(){
-        $sql = "SELECT p.pk_id,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.pk_id = c.id_pk WHERE 1";
+        $sql = "SELECT p.pk_id,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.fk_CompanyID = c.id_pk WHERE 1";
         
         $result = $this->conn->query($sql);
         $r = array();
@@ -141,7 +140,7 @@ class DB
     }
     
     function getProjectByCategory($Category){
-        $sql = "SELECT p.pk_id,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.pk_id = c.id_pk WHERE `Category` = '".$Category."'";
+        $sql = "SELECT p.pk_id,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.fk_CompanyID = c.id_pk WHERE `Category` = '".$Category."'";
         
         $result = $this->conn->query($sql);
         $r = array();
