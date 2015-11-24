@@ -42,18 +42,9 @@ class Company
         
     }
     
-    function createProject($projectName,$category,$discription,$companyID)
-    {
-        $ret = $this->db->createProject($projectName,$category,$discription,$companyID);
-        
-        if($ret == true)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    public static function getInactiveCompanies(){
+        $ret = DB::getInactiveCompanies();
+        return $ret;
     }
 }
 
