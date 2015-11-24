@@ -1,6 +1,7 @@
     <?php       
         include("header.php");     
-        require_once 'classes/projectClass.php'
+        require_once 'classes/projectClass.php';
+        require_once 'classes/companyClass.php';
      ?>
 
 
@@ -15,6 +16,7 @@
        
        if(isset($_POST['submit']))
        {
+        if(Company::checkIfApproved($_SESSION['companyID'])){
              $projectObj = new Project();
             
              $category = $_POST['projecttype'];
@@ -29,6 +31,12 @@
              {
                   echo "Project adding error";
              }
+            
+        }
+        else {
+           echo "Company is not approved by administrator";
+        }
+
         }
         else
         { 

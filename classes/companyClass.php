@@ -46,6 +46,12 @@ class Company
         $ret = DB::getInactiveCompanies();
         return $ret;
     }
+    
+    public static function checkIfApproved($companyID)
+    {
+        $ret = DB::checkIfApproved($companyID);
+        return $ret;
+    }
 }
 
 ?>

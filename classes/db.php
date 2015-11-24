@@ -137,6 +137,20 @@ class DB
         return $r;
     }
     
+    public static function checkIfApproved($companyID){
+        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+        
+        $sql = "SELECT `active` FROM `Company` WHERE `id_pk` = '".$companyID."'";
+        $result = $conn2->query($sql);
+                
+        if ($result->num_rows > 0) {
+            $r = $result->fetch_assoc();
+            return $r['active'];
+        
+        } else {
+            return 0;
+        }
+    }
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Project Part/////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
