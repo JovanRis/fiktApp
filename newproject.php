@@ -1,6 +1,7 @@
     <?php       
         include("header.php");     
-        require_once 'classes/projectClass.php'
+        require_once 'classes/projectClass.php';
+        require_once 'classes/companyClass.php';
      ?>
 
 
@@ -11,6 +12,16 @@
            echo "Only companies can create projects";
            header("Refresh:2; url=project.php");
            die;
+       }
+       
+
+        //CompanyClass::chechIfApproved($_SESSION['companyID']);
+       if(CompanyClass::chechIfApproved($_SESSION['companyID']))
+       {
+            echo "Approved";
+       }
+       else {
+           echo "Denied";
        }
        
        if(isset($_POST['submit']))

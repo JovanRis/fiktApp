@@ -46,6 +46,13 @@ class Company
         $ret = DB::getInactiveCompanies();
         return $ret;
     }
+    
+    public static function chechIfApproved($companyID)
+    {
+        echo "Inside class";
+        $ret = DB::chechIfApproved($companyID);
+        return $ret;
+    }
 }
 
 ?>

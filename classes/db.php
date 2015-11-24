@@ -147,6 +147,28 @@ class DB
         }
     }
     
+    public static function chechIfApproved($companyID){
+        
+        echo "DB";
+        $sql = "SELECT `active` FROM `Company` WHERE `id_pk` = '".$companyID."'";
+        $result = $this->conn->query($sql);
+        $r = array();
+        
+        echo $result;
+        if(result == 1)
+        {
+            echo "TRUE";
+            return true;
+        }
+        else
+        {
+            echo "FALSE";
+            return false;
+        }
+        mysql_free_result($result);
+
+        return $r;
+    }
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Project Part/////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
