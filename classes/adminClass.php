@@ -40,6 +40,10 @@ class Admin
         }
     }
     
+    function approveCompany($companyID){
+        return $this->db->approveCompany($companyID);
+    }
+    
 }
 
 ?>

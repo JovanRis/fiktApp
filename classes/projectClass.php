@@ -23,6 +23,20 @@ class Project{
         return $this->db->signUpForProject($project_id,$student_id);
     }
     
+    function createProject($projectName,$category,$discription,$companyID)
+    {
+        $ret = $this->db->createProject($projectName,$category,$discription,$companyID);
+        
+        if($ret == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
 }
 
 ?>

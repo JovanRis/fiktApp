@@ -1,6 +1,7 @@
     <?php       
        require_once("header.php");    
        require_once("classes/adminClass.php");
+       require_once("classes/companyClass.php");
      ?>
      
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
@@ -26,9 +27,9 @@
 
          <div class='col-md-4'>
            <div class='btn-group-vertical'>
-             
-                    <button onclick="location.href='admin.php'" type='button' class='btn btn-success btn-md' id='newsessionbtn' >New Session</button>
-
+                    <button onclick="location.href='?p=newsession'" type='button' class='btn btn-success btn-md' id='newsessionbtn' >New Session</button>
+                    <button onclick="location.href='?p=approvecompany'" type='button' class='btn btn-success btn-md' id='approvecompanybtn' >Approve Companies</button>
+                    <button onclick="location.href='?p=approveproject'" type='button' class='btn btn-success btn-md' id='approveprojectbtn' >Approve Projects</button>
            </div>
         </div>
         
@@ -91,10 +92,9 @@
         }
        else
        {
-           echo "Admin is logged in";
-           echo $_SESSION['pwHash'];
-           if(isset($_POST['submit']))
+           if(isset($_POST['submit-newsession']))
            {
+               
                  $adminObj = new Admin($_SESSION['username'],$_SESSION['pwHash']);
                  $sessionName = $_POST['namesession'];
                  $startDate = $_POST['startdate'];
@@ -110,26 +110,65 @@
                       echo "Session adding error";
                  }
             }
+            elseif(isset($_POST['submit-approvecompany'])){
+                $adminObj = new Admin($_SESSION['username'],$_SESSION['pwHash']);
+                foreach($_POST['iCom'] as $idCom){
+                    $adminObj->approveCompany($idCom);
+                }
+            }
             else
             {
-             echo "<form id='newsession' role='form' action='admin.php' method='POST'>
-              <fieldset>
-                <legend>Create Session</legend>
-                <ol>
-                    <li>
-                        <label for='namesession'>Session Name:</label> 
-                        <input type='text' class='form-control' name='namesession' id='namesession' />
-                    </li>
-                    <li>
-                        <label for='startdate'>Enter start date of Session</label> 
-                        <input type='date' class='form-control' name='startdate' id='startdate' ><br>
-                        <label for='enddate'>Enter end date of Session</label> 
-                        <input type='date' class='form-control' name='enddate' id='enddate' ><br>
-                    </li>
-                </ol>
-                <input type='submit' class='btn btn-default' name='submit' value='Create Session' />
-               </fieldset>
-             </form>";
+                if($_GET['p'] == 'newsession'){
+                    
+                    echo "<form id='newsession' role='form' action='admin.php' method='POST'>
+                            <fieldset>
+                                <legend>Create Session</legend>
+                                    <ol>
+                                        <li>
+                                            <label for='namesession'>Session Name:</label> 
+                                            <input type='text' class='form-control' name='namesession' id='namesession' />
+                                        </li>
+                                        <li>
+                                            <label for='startdate'>Enter start date of Session</label> 
+                                            <input type='date' class='form-control' name='startdate' id='startdate' ><br>
+                                            <label for='enddate'>Enter end date of Session</label> 
+                                            <input type='date' class='form-control' name='enddate' id='enddate' ><br>
+                                        </li>
+                                    </ol>
+                                    <input type='submit' class='btn btn-default' name='submit-newsession' value='Create Session' />
+                            </fieldset>
+                        </form>";
+                }
+                elseif($_GET['p'] == 'approvecompany') {
+                    
+                    $inactiveCompanies = Company::getInactiveCompanies();
+                    ?>
+                    <form id='approvecompany' role='form' action='admin.php' method = 'POST'>
+                        <fieldset>
+                            <legend>Approve Companies</legend>
+                                    <ol style="aligh:left;">
+                                    <?php
+                                        foreach($inactiveCompanies as $iCom){
+                                         ?>
+                                         <li>
+                                            <label><input type='checkbox' class='form-control' name='iCom[]' value="<?php echo $iCom['id_pk'] ?>" > <?php echo $iCom['CompanyName'] ?></label>
+                                         </li>
+                                         <?php
+                                        }
+                                        ?>
+                                    </ol>
+                            <input type='submit' class='btn btn-default' name='submit-approvecompany' value='Approve Companies' />
+                        </fieldset>
+                    </form>
+                    <?php
+                }
+                elseif($_GET['p'] == 'approveproject') {
+                    echo "form goes here";
+                }
+                else {
+                    echo "Select an option";
+                }
+
            }
        }
              ?>

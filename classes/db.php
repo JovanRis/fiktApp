@@ -116,6 +116,37 @@ class DB
         }
     }
     
+    public static function getInactiveCompanies(){
+        
+        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+        
+        $sql = "SELECT * from `Company` WHERE `active` = '0' ";
+        
+        $result = $conn2->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row);
+            }
+        } else {
+            echo "0 results";
+        }
+        mysql_free_result($result);
+
+        return $r;
+    }
+    
+    function approveCompany($companyID){
+        $sql = "UPDATE `fiktApp`.`Company` SET `active` = '1' WHERE `Company`.`id_pk` = '".$companyID."'";
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+    
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Project Part/////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////

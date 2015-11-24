@@ -1,6 +1,6 @@
     <?php       
         include("header.php");     
-        require_once 'classes/companyClass.php';
+        require_once 'classes/projectClass.php'
      ?>
 
 
@@ -15,13 +15,13 @@
        
        if(isset($_POST['submit']))
        {
-             $companyObj = new Company($_SESSION['username'],$_SESSION['pwHash']);
+             $projectObj = new Project();
             
              $category = $_POST['projecttype'];
              $projectname = $_POST['projectname'];
              $discription = $_POST['projectdescription'];
              
-            if($companyObj->createProject($projectname,$category,$discription,$_SESSION['companyID']))
+            if($projectObj->createProject($projectname,$category,$discription,$_SESSION['companyID']))
              {
                   echo "Project added successfuly";
              }
