@@ -19,12 +19,14 @@
         $companyObj = new Company($user,md5($pass));
         
         $loginSuccess = false;
-        
-        if($userObj->login() > -1)
+        $userID = $userObj->login();
+        if($userID > -1)
         {
             $loginSuccess = true;
             $_SESSION['userType'] = 'student';
+            $_SESSION['userID'] = $userID;
             $_SESSION['username'] = $user;
+            $_SESSION['pwHash'] = $userObj->getPwHash();
         }
         
         $companyID = $companyObj->login();

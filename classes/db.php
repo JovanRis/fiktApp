@@ -158,10 +158,21 @@ class DB
         return $r;
     }
     
+    function signUpForProject($project_id,$student_id){
+        $sql = "INSERT INTO `SignUps`(`fk_projectId`, `fk_studentId`) VALUES ('".$project_id."','".$student_id."')";
+        
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+    
 
 
     ///////////////////////////////////////////////////////////////////////////
-    //////////////////////////////Admin Part/////////////////////////////////
+    //////////////////////////////Admin Part///////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 
 function loginAdmin($user,$pwhash)

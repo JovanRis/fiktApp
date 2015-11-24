@@ -18,6 +18,11 @@ class Project{
         }
     }
     
+    function signUpForProject($project_id,$student_id){
+                
+        return $this->db->signUpForProject($project_id,$student_id);
+    }
+    
 }
 
 ?>

@@ -11,8 +11,13 @@ class User
     public function __construct($user,$pass)
     {
         $this->user=$user;
-        $this->pass=md5($pass);
+        $this->pass=$pass;
         $this->db = new DB();
+    }
+    
+    public function getPwHash()
+    {
+        return $this->pass;
     }
     
     function login()
