@@ -26,7 +26,14 @@
 
     if (isset($_GET['signup'])) {   //if signing up for project execute this
         $projectObj = new Project();
-        $projectObj->signUpForProject($_GET['signup'],$_SESSION['userID']);
+        $r = $projectObj->signUpForProject($_GET['signup'],$_SESSION['userID']);
+        if($r){
+            echo "Signed up successfully!";
+        }
+        else {
+            echo "Signup failed!";
+        }
+        
     }
     else{   //if not signing up execute this
     ?>
