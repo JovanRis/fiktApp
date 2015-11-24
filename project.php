@@ -1,6 +1,7 @@
 <?php
-    require_once ("header.php");
+    require_once "header.php";
     require_once "classes/projectClass.php";
+
 ?>
 
 <div id="main">
@@ -84,7 +85,7 @@
 	    	                if ($_SESSION['userType'] == 'student') {
 	                        ?>
 	                        <div class="panel-footer"> <?php
-	                    	echo htmlspecialchars_decode("<button type='button' class='btn btn-success btn-md' onclick= &quot; location.href='?signup=" . $projects[$p - 1]['pk_id'] . "' &quot; >Sign Up</button>") ?> 
+	                    	echo htmlspecialchars_decode("<button type='button' class='btn btn-success btn-md' onclick= &quot; location.href='?signup=" . $projects[$p - 1]['id_pk'] . "' &quot; >Sign Up</button>") ?> 
 			                </div>
 	                        <?php
 	                        }

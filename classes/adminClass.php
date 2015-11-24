@@ -44,6 +44,10 @@ class Admin
         return $this->db->approveCompany($companyID);
     }
     
+        function approveProject($projectID){
+        return $this->db->approveProject($projectID);
+    }
+    
 }
 
 ?>

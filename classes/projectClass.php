@@ -37,6 +37,11 @@ class Project{
         }
     }
     
+    public static function getInactiveProjects(){
+        $ret = DB::getInactiveProjects();
+        return $ret;
+    }
+    
 }
 
 ?>

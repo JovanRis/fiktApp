@@ -137,22 +137,12 @@ class DB
         return $r;
     }
     
-    function approveCompany($companyID){
-        $sql = "UPDATE `fiktApp`.`Company` SET `active` = '1' WHERE `Company`.`id_pk` = '".$companyID."'";
-        if ($this->conn->query($sql) === TRUE) {
-            return true;
-        } else {
-            echo "Error: " . $sql . "<br>" . $this->conn->error;
-            return false;
-        }
-    }
-    
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Project Part/////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
     
     function getAllProjects(){
-        $sql = "SELECT p.pk_id,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.fk_CompanyID = c.id_pk WHERE 1";
+        $sql = "SELECT p.id_pk,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.fk_CompanyID = c.id_pk WHERE 1";
         
         $result = $this->conn->query($sql);
         $r = array();
@@ -171,7 +161,7 @@ class DB
     }
     
     function getProjectByCategory($Category){
-        $sql = "SELECT p.pk_id,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.fk_CompanyID = c.id_pk WHERE `Category` = '".$Category."'";
+        $sql = "SELECT p.id_pk,p.ProjectName,p.Category,p.Discription,c.CompanyName FROM `Project` p JOIN `Company` c ON p.fk_CompanyID = c.id_pk WHERE `Category` = '".$Category."'";
         
         $result = $this->conn->query($sql);
         $r = array();
@@ -200,6 +190,27 @@ class DB
         }
     }
     
+        public static function getInactiveProjects(){
+        
+        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+        
+        $sql = "SELECT * from `Project` WHERE `active` = '0' ";
+
+        $result = $conn2->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row);
+            }
+        } else {
+            echo "0 results";
+        }
+        mysql_free_result($result);
+
+        return $r;
+    }
+    
 
 
     ///////////////////////////////////////////////////////////////////////////
@@ -223,6 +234,26 @@ function loginAdmin($user,$pwhash)
         }
         else {
             return -1;
+        }
+    }
+    
+    function approveCompany($companyID){
+        $sql = "UPDATE `fiktApp`.`Company` SET `active` = '1' WHERE `Company`.`id_pk` = '".$companyID."'";
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+    
+    function approveProject($projectID){
+        $sql = "UPDATE `fiktApp`.`Project` SET `active` = '1' WHERE `Project`.`id_pk` = '".$projectID."'";
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
         }
     }
     

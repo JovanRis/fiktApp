@@ -2,6 +2,7 @@
        require_once("header.php");    
        require_once("classes/adminClass.php");
        require_once("classes/companyClass.php");
+       require_once("classes/projectClass.php")
      ?>
      
     <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> 
@@ -115,6 +116,13 @@
                 foreach($_POST['iCom'] as $idCom){
                     $adminObj->approveCompany($idCom);
                 }
+
+            }
+            elseif(isset($_POST['submit-approveproject'])){
+                $adminObj = new Admin($_SESSION['username'],$_SESSION['pwHash']);
+                foreach($_POST['iPro'] as $idPro){
+                    $adminObj->approveProject($idPro);
+                }
             }
             else
             {
@@ -163,7 +171,28 @@
                     <?php
                 }
                 elseif($_GET['p'] == 'approveproject') {
-                    echo "form goes here";
+                    $inactiveProjects = Project::getInactiveProjects();
+                    ?>
+                    
+                    <form id='approveproject' role='form' action='admin.php' method = 'POST'>
+                        <fieldset>
+                            <legend>Approve Companies</legend>
+                                    <ol style="aligh:left;">
+                                    <?php
+                                        foreach($inactiveProjects as $iPro){
+                                         ?>
+                                         <li>
+                                            <label><input type='checkbox' class='form-control' name='iPro[]' value="<?php echo $iPro['id_pk'] ?>" > <?php echo $iPro['ProjectName'] ?></label>
+                                         </li>
+                                         <?php
+                                        }
+                                        ?>
+                                    </ol>
+                            <input type='submit' class='btn btn-default' name='submit-approveproject' value='Approve Projects' />
+                        </fieldset>
+                    </form>
+                    
+                    <?php
                 }
                 else {
                     echo "Select an option";
