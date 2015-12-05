@@ -1,11 +1,13 @@
 <?php
     require_once "header.php";
     require_once "classes/projectClass.php";
+    
+    $studentsPerProject = 5;
 
 ?>
 
 <div id="main">
-   <div class="col-md-4">
+   <div class="col-md-2">
        <div class="btn-group-vertical">
           <!-- Ako e najaven kako Kompanija da mozi da dodaj  -->
           <?php
@@ -82,10 +84,11 @@
 	    	                    echo "<b>" . $projects[$p - 1]['CompanyName'] . "</b>";?>                  
 	                        </div>
 	                        <?php
-	    	                if ($_SESSION['userType'] == 'student') {
+	    	                if ($_SESSION['userType'] == 'student' && $projects[$p - 1]['cnt'] < $studentsPerProject ) {
 	                        ?>
-	                        <div class="panel-footer"> <?php
-	                    	echo htmlspecialchars_decode("<button type='button' class='btn btn-success btn-md' onclick= &quot; location.href='?signup=" . $projects[$p - 1]['id_pk'] . "' &quot; >Sign Up</button>") ?> 
+	                        <div class="panel-footer" style='text-align: right;'> <?php
+	                    	echo htmlspecialchars_decode("<button type='button' style='margin-right: 60px;' class='btn btn-success btn-md' onclick= &quot; location.href='?signup=" . $projects[$p - 1]['id_pk'] . "' &quot; >Sign Up</button>") ?>
+	                    	<span>Spots left: <?php echo $studentsPerProject-$projects[$p - 1]['cnt'] ?> </span>
 			                </div>
 	                        <?php
 	                        }
