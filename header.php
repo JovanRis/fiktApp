@@ -41,8 +41,8 @@
                     echo "<li>".$_SESSION['username']." <a href='?logout=true' class='btn btn-success'>Logout</a>  </li>";
                 }
                 else {
-                    echo '<li><a href="login.php" class="btn btn-success"><span class="glyphicon glyphicon-user"></span>Login</a></li>' . "\n";
-                    echo '<li><a href="register.php" class="btn btn-success">Register</a></li>' . "\n";
+                    echo '<li><a href="login.php" class="btn btn-success"><span class="glyphicon glyphicon-user"></span> Login</a></li>' . "\n";
+                    echo '<li><a href="register.php" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Register</a></li>' . "\n";
                 }
                
                 if(isset($_GET['logout']))
@@ -56,27 +56,38 @@
          </div>
     </div>        
     <div class="row">
-        <div class="col-md-4"></div>
-         <div class="col-md-6"> 
-         <div class="btn-group">
-         <button onclick="location.href='index.php'" type="button" class="btn btn-success btn-lg">Home</button>
-            <div class="btn-group">
-            <button type="button" class="btn btn-success btn-lg" >For Students</button>
-                <div class="btn-group">
-                <button type="button" class="btn btn-success btn-lg" >For Companies</button>
-                     <div class="btn-group">
-                     <button type="button" class="btn btn-success btn-lg" >For FIKT</button> 
-                         <div class="btn-group">
-                         <button onclick="location.href='project.php'" type="button" class="btn btn-success btn-lg">Projects</button>
-                         </div>
-                     </div>
-                 </div>
-             </div>
-         </div>
-         </div> 
-     <div class="col-md-2"></div>
-    </div>   
+        <div class="col-xs-12 col-md-4"></div>
+         <div class="col-xs-12 col-md-6" > 
          
-        </header>
+         <nav  class="navbar navbar-default"  role="navigation">
+          <div class="navbar-header" >
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar"aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          
+          </div>
+
+         <div class="collapse navbar-collapse" id="myNavbar">
+         
+             <div class="btn-group">
+             <button onclick="location.href='index.php'" type="button" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-home"></span> Home</button>
+                <button type="button" class="btn btn-success btn-lg" >For Students</button>
+                    <button type="button" class="btn btn-success btn-lg" >For Companies</button>
+                         <button type="button" class="btn btn-success btn-lg" >For FIKT</button>
+                             <button onclick="location.href='project.php'" type="button" class="btn btn-success btn-lg">Projects</button>
+            </div>
+            </div>
+            </nav>
+            
+        </div>
+        </div> 
+         
+        <div class=" col-xs-12 col-md-2"></div>
+        </div>   
+         
+     </header>
        
 

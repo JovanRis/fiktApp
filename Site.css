@@ -52,6 +52,7 @@ nav, section {
     margin-left:  auto;
     margin-right: auto;
     width: 80%;
+    
 }
 
    
@@ -103,8 +104,6 @@ footer .footer-wrapper {
 
     #login a {
         background-color: #5cb85c;
-        margin-left: 10px;
-        margin-right: 3px;
         padding: 3px 4px;
         text-decoration: none;
     }
@@ -148,6 +147,14 @@ ul#menu {
             text-decoration: none;
         }
 
+#myNavbar {
+     background-color: white;
+      border-color: white;
+ }
+nav.navbar.navbar-default {
+      background-color: white;
+      border-color: white;
+ }
 
 /* page elements
 ----------------------------------------------------------*/
