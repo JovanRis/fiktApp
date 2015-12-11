@@ -6,6 +6,32 @@
 
      ?>
 
+<script type="text/javascript">
+
+  function checkPassword(str)
+  {
+    var re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    return re.test(str);
+  }
+
+  function checkForm(form)
+  {
+    if(form.username.value == "") {
+      alert("Error: Username cannot be blank!");
+      form.username.focus();
+      return false;
+    }
+    
+    if(!checkPassword(form.password.value)) {
+        alert("The password you have entered is not valid! The password must contain at least one number, one lowercase, one uppercase letter and size of at least six characters");
+        form.password.focus();
+        return false;
+    }
+    
+    return true;
+  }
+
+</script>
 
 <div id="main">
     <h2>Register an account</h2>
@@ -52,7 +78,7 @@
         }
         else
         {
-            echo " <form id='registerForm' action='register.php' method='POST'>
+            echo " <form id='registerForm' action='register.php' method='POST' onsubmit='return checkForm(this);'>
             <fieldset>
                 <legend>Register an account</legend>
                 <ol>
