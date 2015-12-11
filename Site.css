@@ -155,7 +155,9 @@ nav.navbar.navbar-default {
       background-color: white;
       border-color: white;
  }
-
+a.btn.btn-success.btn-lg {
+    color: white;
+}
 /* page elements
 ----------------------------------------------------------*/
 

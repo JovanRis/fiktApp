@@ -9,7 +9,7 @@
         <div class="well">
              <div class="row">
              
-               <div class="col-xs-6 col-sm-4">
+               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="panel-group">
                         <div class="panel panel-success">
                             <div class="panel-heading">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
                 
-                <div class="col-xs-6 col-sm-4">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="panel-group">
                         <div class="panel panel-success">
                             <div class="panel-heading">
@@ -43,7 +43,7 @@
                     
                 <div class="clearfix visible-xs"></div>
                 
-                <div class="col-xs-6 col-sm-4">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                    <div class="panel-group">
                         <div class="panel panel-success">
                             <div class="panel-heading">
@@ -63,7 +63,7 @@
             
                          <div class="row">
              
-               <div class="col-xs-6 col-sm-4">
+               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="panel-group">
                         <div class="panel panel-success">
                             <div class="panel-heading">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 
-                <div class="col-xs-6 col-sm-4">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                     <div class="panel-group">
                         <div class="panel panel-success">
                             <div class="panel-heading">
@@ -97,7 +97,7 @@
                     
                 <div class="clearfix visible-xs"></div>
                 
-                <div class="col-xs-6 col-sm-4">
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                    <div class="panel-group">
                         <div class="panel panel-success">
                             <div class="panel-heading">
