@@ -83,16 +83,12 @@
 	    	                    echo $projects[$p - 1]['Discription'] . "<br />";
 	    	                    echo "<b>" . $projects[$p - 1]['CompanyName'] . "</b>";?>                  
 	                        </div>
-	                        <?php
-	    	                if ($_SESSION['userType'] == 'student' && $projects[$p - 1]['cnt'] < $studentsPerProject ) {
-	                        ?>
+
 	                        <div class="panel-footer" style='text-align: right;'> <?php
-	                    	echo htmlspecialchars_decode("<button type='button' style='margin-right: 60px;' class='btn btn-success btn-md' onclick= &quot; location.href='?signup=" . $projects[$p - 1]['id_pk'] . "' &quot; >Sign Up</button>") ?>
+	                    	echo htmlspecialchars_decode("<button type='button' style='margin-right: 60px;' class='btn btn-success btn-md' onclick= &quot; location.href='projectDetails.php?pid=" . $projects[$p - 1]['id_pk'] . "' &quot; >Details</button>") ?>
 	                    	<span>Spots left: <?php echo $studentsPerProject-$projects[$p - 1]['cnt'] ?> </span>
 			                </div>
-	                        <?php
-	                        }
-	                        ?>
+
                     	</div>
                 	</div>
             	</div>

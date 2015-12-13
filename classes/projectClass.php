@@ -37,6 +37,11 @@ class Project{
         }
     }
     
+    function getProjectByID($projectID){
+        $ret = $this->db->getProjectByID($projectID);
+        return $ret;
+    }
+    
     public static function getInactiveProjects(){
         $ret = DB::getInactiveProjects();
         return $ret;

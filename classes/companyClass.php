@@ -52,6 +52,11 @@ class Company
         $ret = DB::checkIfApproved($companyID);
         return $ret;
     }
+    
+    public static function getCompanyInfo($companyID){
+        $ret = DB::getCompanyInfo($companyID);
+        return $ret;
+    }
 }
 
 ?>

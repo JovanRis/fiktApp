@@ -151,6 +151,23 @@ class DB
             return 0;
         }
     }
+    
+        public static function getCompanyInfo($companyID){
+        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+        
+        $sql = "SELECT `CompanyName`,`CompanyDetails`,`imgUrl` FROM `Company` WHERE `id_pk` = '".$companyID."'";
+        $result = $conn2->query($sql);
+                
+        if ($result->num_rows > 0) {
+            $r = $result->fetch_assoc();
+            return $r;
+        
+        } else {
+            return 0;
+        }
+        
+    }
+    
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Project Part/////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
@@ -229,6 +246,40 @@ class DB
         mysql_free_result($result);
 
         return $r;
+    }
+    
+    function getprojectByID($projectID){
+        $sql = "SELECT * from `Project` Where `id_pk` = '".$projectID."'";
+        
+        $result = $this->conn->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row);
+            }
+        } else {
+            echo "0 results";
+        }
+        
+        $sql = "SELECT st.firstname,st.lastname FROM `SignUps` as si left join Student as st on si.fk_studentid = st.id_pk WHERE si.fk_projectid = '".$projectID."'";
+        
+        $result = $this->conn->query($sql);
+        $r1 = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r1,$row);
+            }
+        } else {
+            echo "0 results";
+        }
+        
+        
+        $r = $r[0];
+        $r['SignedUp'] = $r1;
+        return $r;
+        
     }
     
 
