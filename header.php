@@ -9,6 +9,12 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        
+       
+  <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <?php 
         session_start();
@@ -74,9 +80,9 @@
          
                  <ul class="nav navbar-nav">
                     <li><a class="btn btn-success btn-lg" href='index.php' ><span class="glyphicon glyphicon-home"></span>Home</a></li>
-                    <li><a class="btn btn-success btn-lg" href="#">For Students</a></li>
-                    <li><a class="btn btn-success btn-lg" href="#">For Companies</a></li> 
-                    <li><a class="btn btn-success btn-lg" href="#">For FIKT</a></li> 
+                    <li><a class="btn btn-success btn-lg" href='forStudents.php'>For Students</a></li>
+                    <li><a class="btn btn-success btn-lg" href='forCompanies.php'>For Companies</a></li> 
+                    <li><a class="btn btn-success btn-lg" href='forFikt.php'>For FIKT</a></li> 
                     <li><a class="btn btn-success btn-lg" href='project.php' >Projects</a></li>
                  </ul>
            
