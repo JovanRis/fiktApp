@@ -31,6 +31,7 @@
                     <button onclick="location.href='?p=newsession'" type='button' class='btn btn-success btn-md' id='newsessionbtn' >New Session</button>
                     <button onclick="location.href='?p=approvecompany'" type='button' class='btn btn-success btn-md' id='approvecompanybtn' >Approve Companies</button>
                     <button onclick="location.href='?p=approveproject'" type='button' class='btn btn-success btn-md' id='approveprojectbtn' >Approve Projects</button>
+                    <button onclick="location.href='?p=finishproject'" type='button' class='btn btn-success btn-md' id='approveprojectbtn' >Finish Projects</button>
            </div>
         </div>
         
@@ -124,6 +125,12 @@
                     $adminObj->approveProject($idPro);
                 }
             }
+            elseif(isset($_POST['submit-finishproject'])){
+                $adminObj = new Admin($_SESSION['username'],$_SESSION['pwHash']);
+                foreach($_POST['iPro'] as $idPro){
+                    $adminObj->finishProject($idPro);
+                }
+            }
             else
             {
                 if($_GET['p'] == 'newsession'){
@@ -195,6 +202,37 @@
                     
                     <?php
                 }
+
+                elseif($_GET['p'] == 'finishproject') {
+                    $projectObj = new Project();
+                    $Projects = $projectObj->getProjects("all");
+                    ?>
+                    
+                    <form id='approveproject' role='form' action='admin.php' method = 'POST'>
+                        <fieldset>
+                            <legend>Approve Companies</legend>
+                                    <ol style="aligh:left;">
+                                    <?php
+                                        foreach($Projects as $Pro){
+                                            //print_r($Pro);
+                                            if($Pro['completed'] == '0'){
+                                         ?>
+                                         <li>
+                                            <label><input type='checkbox' class='form-control' name='iPro[]' value="<?php echo $Pro['id_pk'] ?>" > <?php echo $Pro['ProjectName'] ?></label>
+                                         </li>
+                                         <?php
+                                            }
+                                        }
+                                        ?>
+                                    </ol>
+                            <input type='submit' class='btn btn-default' name='submit-finishproject' value='Finish Projects' />
+                        </fieldset>
+                    </form>
+                    
+                    <?php
+                }
+                
+                
                 else {
                     echo "Select an option";
                 }

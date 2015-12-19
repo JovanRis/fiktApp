@@ -216,7 +216,7 @@ class DB
     ///////////////////////////////////////////////////////////////////////////
     
     function getAllProjects(){
-        $sql = "SELECT p.id_pk, p.ProjectName, p.Category, p.Discription, c.CompanyName, (SELECT count( * )FROM SignUps WHERE fk_projectId = p.id_pk) as cnt
+        $sql = "SELECT p.id_pk, p.ProjectName, p.Category, p.Discription, c.CompanyName, p.completed, (SELECT count( * )FROM SignUps WHERE fk_projectId = p.id_pk) as cnt
                 FROM `Project` p
                 LEFT JOIN `Company` c ON p.fk_CompanyID = c.id_pk
                 WHERE p.active = 1 ";
@@ -361,6 +361,16 @@ function loginAdmin($user,$pwhash)
     
     function approveProject($projectID){
         $sql = "UPDATE `fiktApp`.`Project` SET `active` = '1' WHERE `Project`.`id_pk` = '".$projectID."'";
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+    
+    function finishProject($projectID){
+        $sql = "UPDATE `Project` SET `completed` = '1' WHERE `Project`.`id_pk` = '".$projectID."'";
         if ($this->conn->query($sql) === TRUE) {
             return true;
         } else {
