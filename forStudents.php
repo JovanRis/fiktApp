@@ -17,19 +17,19 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
           <div class="item active">
-            <img src="student1.jpg" alt="Student 1" width="1200" height="700">
+            <img src="images/student1.jpg" alt="Student 1" width="1200" height="700">
             <div class="carousel-caption">
             </div>      
           </div>
 
           <div class="item">
-            <img src="student2.jpg" alt="Student 2" width="1200" height="700">
+            <img src="images/student2.jpg" alt="Student 2" width="1200" height="700">
             <div class="carousel-caption">
             </div>      
           </div>
     
           <div class="item">
-            <img src="student3.jpg" alt="Student 3" width="1200" height="700">
+            <img src="images/student3.jpg" alt="Student 3" width="1200" height="700">
             <div class="carousel-caption">
           </div>      
       </div>

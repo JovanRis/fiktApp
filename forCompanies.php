@@ -17,13 +17,13 @@
         <div class="carousel-inner" role="listbox">
 
           <div class="item active">
-            <img src="company2.jpg" alt="Company 2" width="1200" height="700">
+            <img src="images/company2.jpg" alt="Company 2" width="1200" height="700">
             <div class="carousel-caption">
             </div>      
           </div>
     
           <div class="item">
-            <img src="company3.jpg" alt="Company 3" width="1200" height="700">
+            <img src="images/company3.jpg" alt="Company 3" width="1200" height="700">
             <div class="carousel-caption">
           </div>      
       </div>

@@ -31,7 +31,7 @@
                 <div class="site-logo">
                     
                    <a href="index.php"> </a>
-                   <img src="fict_logo.png" alt="FIKT-LOGO" width="250px" height="100px" >
+                   <img src="images/fict_logo.png" alt="FIKT-LOGO" width="250px" height="100px" >
                     
                 </div>
             </div>
