@@ -1,7 +1,8 @@
    <?php       
         require_once "header.php"; 
-        
+       
         require_once 'classes/userClass.php';
+         
         require_once 'classes/companyClass.php';
      ?>
 

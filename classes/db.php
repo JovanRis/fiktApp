@@ -62,6 +62,29 @@ class DB
         }
     }
     
+    function getStudentProjects($studentID){
+        $sql = "SELECT `id_pk`
+                FROM Project p LEFT JOIN SignUps su ON p.id_pk = su.fk_projectId
+                WHERE su.fk_studentId = '".$studentID."'";
+                
+                $result = $this->conn->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row['id_pk']);
+            }
+        } else {
+            echo "0 results";
+        }
+
+        mysql_free_result($result);
+        
+        return $r;
+                
+        
+    }
+    
     
     
     
@@ -224,7 +247,7 @@ class DB
         }
     }
     
-        public function getInactiveProjects(){
+    public function getInactiveProjects(){
         
         $sql = "SELECT * from `Project` WHERE `active` = '0' ";
 
@@ -257,7 +280,7 @@ class DB
             echo "0 results";
         }
         
-        $sql = "SELECT st.firstname,st.lastname FROM `SignUps` as si left join Student as st on si.fk_studentid = st.id_pk WHERE si.fk_projectid = '".$projectID."'";
+        $sql = "SELECT st.firstname,st.lastname, st.email FROM `SignUps` as si left join Student as st on si.fk_studentid = st.id_pk WHERE si.fk_projectid = '".$projectID."'";
         
         $result = $this->conn->query($sql);
         $r1 = array();

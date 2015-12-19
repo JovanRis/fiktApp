@@ -1,5 +1,4 @@
 <?php
-
 require_once 'db.php';
 
 class User
@@ -10,6 +9,7 @@ class User
     
     public function __construct()
     {
+        
         $this->db = new DB();
     }
     
@@ -39,6 +39,16 @@ class User
             return false;
         }
         
+    }
+    
+    function getActiveProjects($userID){
+        $currentProjectIDs = $this->db->getStudentProjects($userID);
+        //print_r($currentProjectIDs);
+        $currentProjects = array();
+        for($i=0;$i<count($currentProjectIDs);$i++){
+            array_push($currentProjects,$this->db->getprojectByID($currentProjectIDs[$i]));
+        }
+        return $currentProjects;
     }
 }
 

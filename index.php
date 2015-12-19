@@ -6,15 +6,37 @@
      if(isset($_SESSION['userType'])){
          if($_SESSION[userType] == 'student'){
             require_once("classes/userClass.php");
-            
+            $studentObj = new User();
+            $projects = $studentObj->getActiveProjects($_SESSION['userID']);
+            //print_r($projects);
             ?> 
             <div id="main">
-                
+            <?php
+            
+            foreach($projects as $project){
+                ?>
+                <div>
+                    <div><h3><?php echo $project['ProjectName'] ?></h3></div>
+                    <div><p><?php echo $project['Discription'] ?></p></div>
+                    <div>
+                    <?php
+                    foreach($project['SignedUp'] as $colegue){
+                        ?>
+                            <div> <?php echo $colegue['firstname']." ".$colegue['lastname']." ".$colegue['email']; ?> </div>
+                        <?php
+                    }
+                    ?>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
             </div>
             <?php
          }
          if($_SESSION['userType']=='company'){
             require_once("classes/companyClass.php");
+            $companyObj = new Company();
             ?> 
             <div id="main">
                 
