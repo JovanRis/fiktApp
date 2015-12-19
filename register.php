@@ -48,8 +48,8 @@
             
             if($radioCheck == "student")
             {
-                 $userObj = new User($username, md5($password));
-                 if($userObj-> register($username,$password,$firstname, $lastname, $email))
+                 $userObj = new User();
+                 if($userObj-> register($username,md5($password),$firstname, $lastname, $email))
                  {
                       echo "User register successful";
                  }
@@ -61,8 +61,8 @@
             }
             elseif ($radioCheck == "company") 
             {
-                $companyObj = new Company ($username, md5($password));
-                if($companyObj-> register($username,$password,"deteils go here",$email,"imgUrl goes here"))
+                $companyObj = new Company ();
+                if($companyObj-> register($username,md5($password),"deteils go here",$email,"imgUrl goes here"))
                 {
                       echo "Company register successful";
                  }
