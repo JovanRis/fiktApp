@@ -75,7 +75,7 @@ class DB
             array_push($r,$row['id_pk']);
             }
         } else {
-            echo "0 results";
+            return -1;
         }
 
         mysql_free_result($result);
@@ -152,7 +152,7 @@ class DB
             array_push($r,$row);
             }
         } else {
-            echo "0 results";
+            return -1;
         }
         mysql_free_result($result);
 
@@ -188,6 +188,29 @@ class DB
         
     }
     
+    function getCompanyProjects($companyID){
+        $sql = "SELECT `id_pk`
+                FROM Project p 
+                WHERE p.fk_companyID = '".$companyID."'";
+                
+                $result = $this->conn->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row['id_pk']);
+            }
+        } else {
+            return -1;
+        }
+
+        mysql_free_result($result);
+        
+        return $r;
+                
+        
+    }
+    
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Project Part/////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
@@ -206,7 +229,7 @@ class DB
             array_push($r,$row);
             }
         } else {
-            echo "0 results";
+            return -1;
         }
 
         mysql_free_result($result);
@@ -228,7 +251,7 @@ class DB
             array_push($r,$row);
             }
         } else {
-            echo "0 results";
+            return -1;
         }
 
         mysql_free_result($result);
@@ -259,7 +282,7 @@ class DB
             array_push($r,$row);
             }
         } else {
-            echo "0 results";
+            return -1;
         }
         mysql_free_result($result);
 
@@ -277,7 +300,7 @@ class DB
             array_push($r,$row);
             }
         } else {
-            echo "0 results";
+            return -1;
         }
         
         $sql = "SELECT st.firstname,st.lastname, st.email FROM `SignUps` as si left join Student as st on si.fk_studentid = st.id_pk WHERE si.fk_projectid = '".$projectID."'";
@@ -290,7 +313,7 @@ class DB
             array_push($r1,$row);
             }
         } else {
-            echo "0 results";
+            $r1 = "There are no signed up students";
         }
         
         

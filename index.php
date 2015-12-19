@@ -37,10 +37,34 @@
          if($_SESSION['userType']=='company'){
             require_once("classes/companyClass.php");
             $companyObj = new Company();
+            $projects = $companyObj->getActiveProjects($_SESSION['companyID']);
+            
             ?> 
-            <div id="main">
-                
-            </div>
+            <div class="container">
+            <?php
+            foreach($projects as $project){
+                ?>
+                <div>
+                    <div class="container text-left"><h3><?php echo $project['ProjectName'] ?></h3></div>
+                    <div class="container text-left"><p><?php echo $project['Discription'] ?></p></div>
+                    <div class="container text-left">
+                    <?php
+                    if(is_array($project['SignedUp'])){
+                    foreach($project['SignedUp'] as $colegue){
+                        ?>
+                            <div class="container text-left"> <?php echo $colegue['firstname']." ".$colegue['lastname']." ".$colegue['email']; ?> </div>
+                        <?php
+                    }}
+                    else{
+                        echo $project["SignedUp"];
+                    }
+                    ?>
+                    </div>
+                </div>
+                <?php
+            }
+            ?>
+
             <?php
          }
      }

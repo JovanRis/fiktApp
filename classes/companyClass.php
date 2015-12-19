@@ -57,6 +57,16 @@ class Company
         $ret = $this->db->getCompanyInfo($companyID);
         return $ret;
     }
+    
+    function getActiveProjects($companyID){
+        $currentProjectIDs = $this->db->getCompanyProjects($companyID);
+    //print_r($currentProjectIDs);
+        $currentProjects = array();
+        for($i=0;$i<count($currentProjectIDs);$i++){
+            array_push($currentProjects,$this->db->getprojectByID($currentProjectIDs[$i]));
+        }
+        return $currentProjects;
+    }
 }
 
 ?>
