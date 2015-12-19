@@ -42,8 +42,8 @@ class Project{
         return $ret;
     }
     
-    public static function getInactiveProjects(){
-        $ret = DB::getInactiveProjects();
+    public function getInactiveProjects(){
+        $ret = $this->db->getInactiveProjects();
         return $ret;
     }
     

@@ -116,13 +116,12 @@ class DB
         }
     }
     
-    public static function getInactiveCompanies(){
-        
-        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+    public function getInactiveCompanies(){
+    
         
         $sql = "SELECT * from `Company` WHERE `active` = '0' ";
         
-        $result = $conn2->query($sql);
+        $result = $this->conn->query($sql);
         $r = array();
         if ($result->num_rows > 0) {
         // output data of each row
@@ -137,11 +136,10 @@ class DB
         return $r;
     }
     
-    public static function checkIfApproved($companyID){
-        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+    public function checkIfApproved($companyID){
         
         $sql = "SELECT `active` FROM `Company` WHERE `id_pk` = '".$companyID."'";
-        $result = $conn2->query($sql);
+        $result = $this->conn->query($sql);
                 
         if ($result->num_rows > 0) {
             $r = $result->fetch_assoc();
@@ -152,11 +150,10 @@ class DB
         }
     }
     
-        public static function getCompanyInfo($companyID){
-        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+        public function getCompanyInfo($companyID){
         
         $sql = "SELECT `CompanyName`,`CompanyDetails`,`imgUrl` FROM `Company` WHERE `id_pk` = '".$companyID."'";
-        $result = $conn2->query($sql);
+        $result = $this->conn->query($sql);
                 
         if ($result->num_rows > 0) {
             $r = $result->fetch_assoc();
@@ -227,13 +224,11 @@ class DB
         }
     }
     
-        public static function getInactiveProjects(){
-        
-        $conn2 = new mysqli("localhost","root","7076","fiktApp");
+        public function getInactiveProjects(){
         
         $sql = "SELECT * from `Project` WHERE `active` = '0' ";
 
-        $result = $conn2->query($sql);
+        $result = $this->conn->query($sql);
         $r = array();
         if ($result->num_rows > 0) {
         // output data of each row

@@ -8,10 +8,8 @@ class Company
     private $pass='';
     private $db;
     
-    public function __construct($user,$pass)
+    public function __construct()
     {
-        $this->user=$user;
-        $this->pass=$pass;
         $this->db = new DB();
     }
     
@@ -20,8 +18,10 @@ class Company
         return $this->pass;
     }
     
-    function login()
+    function login($user,$pass)
     {
+        $this->user=$user;
+        $this->pass=$pass;
         $ret = $this->db->loginCompany($this->user,$this->pass);
         return $ret;
 
@@ -42,19 +42,19 @@ class Company
         
     }
     
-    public static function getInactiveCompanies(){
-        $ret = DB::getInactiveCompanies();
+    public function getInactiveCompanies(){
+        $ret = $this->db->getInactiveCompanies();
         return $ret;
     }
     
-    public static function checkIfApproved($companyID)
+    public function checkIfApproved($companyID)
     {
-        $ret = DB::checkIfApproved($companyID);
+        $ret = $this->db->checkIfApproved($companyID);
         return $ret;
     }
     
-    public static function getCompanyInfo($companyID){
-        $ret = DB::getCompanyInfo($companyID);
+    public function getCompanyInfo($companyID){
+        $ret = $this->db->getCompanyInfo($companyID);
         return $ret;
     }
 }

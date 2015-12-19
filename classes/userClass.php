@@ -8,10 +8,8 @@ class User
     private $pass='';
     private $db;
     
-    public function __construct($user,$pass)
+    public function __construct()
     {
-        $this->user=$user;
-        $this->pass=$pass;
         $this->db = new DB();
     }
     
@@ -20,8 +18,10 @@ class User
         return $this->pass;
     }
     
-    function login()
+    function login($user,$pass)
     {
+        $this->user=$user;
+        $this->pass=$pass;
         $ret = $this->db->loginStudent($this->user,$this->pass);
         return $ret;
     }

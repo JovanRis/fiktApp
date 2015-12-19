@@ -2,6 +2,7 @@
         include("header.php");     
         require_once 'classes/projectClass.php';
         require_once 'classes/companyClass.php';
+        $companyObj = new Company();
      ?>
 
 
@@ -16,7 +17,7 @@
        
        if(isset($_POST['submit']))
        {
-        if(Company::checkIfApproved($_SESSION['companyID'])){
+        if($companyObj->checkIfApproved($_SESSION['companyID'])){
              $projectObj = new Project();
             
              $category = $_POST['projecttype'];

@@ -1,5 +1,28 @@
     <?php       
-        include("header.php");         
+        require_once("header.php");         
+     ?>
+     
+     <?php
+     if(isset($_SESSION['userType'])){
+         if($_SESSION[userType] == 'student'){
+            require_once("classes/userClass.php");
+            
+            ?> 
+            <div id="main">
+                
+            </div>
+            <?php
+         }
+         if($_SESSION['userType']=='company'){
+            require_once("classes/companyClass.php");
+            ?> 
+            <div id="main">
+                
+            </div>
+            <?php
+         }
+     }
+     else{
      ?>
 
 
@@ -115,10 +138,14 @@
                
             </div>
         </div>
-    </div>
+        
+        <?php } ?>
     
     
 </div> <!-- End of outer-wrapper which opens in header.php -->
+
+
+
 <?php 
     include ("footer.php");
  ?>

@@ -148,8 +148,8 @@
                         </form>";
                 }
                 elseif($_GET['p'] == 'approvecompany') {
-                    
-                    $inactiveCompanies = Company::getInactiveCompanies();
+                    $companyObj = new Company();
+                    $inactiveCompanies = $companyObj->getInactiveCompanies();
                     ?>
                     <form id='approvecompany' role='form' action='admin.php' method = 'POST'>
                         <fieldset>
@@ -171,7 +171,8 @@
                     <?php
                 }
                 elseif($_GET['p'] == 'approveproject') {
-                    $inactiveProjects = Project::getInactiveProjects();
+                    $projectObj = new Project();
+                    $inactiveProjects = $projectObj->getInactiveProjects();
                     ?>
                     
                     <form id='approveproject' role='form' action='admin.php' method = 'POST'>

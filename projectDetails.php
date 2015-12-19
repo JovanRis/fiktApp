@@ -25,8 +25,9 @@
     else{   //if not signing up execute this
     $projectID = $_GET['pid'];
     $currentProject = $projectObj->getProjectByID($projectID);
-    //print_r($currentProject);
-    $companyDetails = Company::getCompanyInfo($currentProject['fk_CompanyID']);
+        
+    $companyObj = new Company();
+    $companyDetails = $companyObj->getCompanyInfo($currentProject['fk_CompanyID']);
     //print_r ($companyDetails);
     
     ?>

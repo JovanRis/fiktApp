@@ -15,11 +15,11 @@
         $radioCheck = $_POST['logtype'];
         $user = $_POST['username'];
         $pass = $_POST['password'];
-        $userObj = new User($user,md5($pass));
-        $companyObj = new Company($user,md5($pass));
+        $userObj = new User();
+        $companyObj = new Company();
         
         $loginSuccess = false;
-        $userID = $userObj->login();
+        $userID = $userObj->login($user,md5($pass));
         if($userID > -1)
         {
             $loginSuccess = true;
@@ -29,7 +29,7 @@
             $_SESSION['pwHash'] = $userObj->getPwHash();
         }
         
-        $companyID = $companyObj->login();
+        $companyID = $companyObj->login($user,md5($pass));
         if($companyID > -1)
         {
             $loginSuccess = true;
