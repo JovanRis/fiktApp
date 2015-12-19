@@ -71,119 +71,70 @@
      else{
      ?>
 
+    <div id='main' class = 'container'>
+      <div class="col-md-12">
+    <?php
 
-   <div id="main">
-   
-        <h3>Completed Projects</h3>
+        require_once("classes/projectClass.php");
+           
+        $projectObj = new Project();
+        $projects;
+    
+    $projects = $projectObj->getCompletedProjects();
+    //print_r($projects);
+
+    ?>
+    
         <div class="well">
-             <div class="row">
-             
-               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="panel-group">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse1">Name of Project</a>
-                                  </h4>
-                            </div>
-                            <div id="collapse1" class="panel-collapse collapse">
-                                      <div class="panel-body">Project Description</div>
-                                      <div class="panel-footer">Name of Company</div>
-                            </div>
+        <?php
+            $p = 1;
+            for ($i = 0; $i < count($projects) / 3; $i++) {
+                echo "<div class='row'>";
+                for ($q = 0; $q < 3; $q++) {
+	                if ($p > count($projects)) {
+		                continue;
+	                }
+        ?>
+        
+            <div class="col-xs-6 col-sm-4">
+                <div class="panel-group">
+                    <div class="panel panel-success">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse<?php
+                            echo $p; ?>"> <?php
+                            echo $projects[$p - 1]['ProjectName'] ?> </a>
+                            </h4>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="panel-group">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse2">Name of Project</a>
-                                  </h4>
-                            </div>
-                            <div id="collapse2" class="panel-collapse collapse">
-                                      <div class="panel-body">Project Description</div>
-                                      <div class="panel-footer">Name of Company</div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                    
-                <div class="clearfix visible-xs"></div>
-                
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                   <div class="panel-group">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse3">Name of Project</a>
-                                  </h4>
-                            </div>
-                            <div id="collapse3" class="panel-collapse collapse">
-                                      <div class="panel-body">Project Description</div>
-                                      <div class="panel-footer">Name of Company</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-            </div>
-            
-                         <div class="row">
-             
-               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="panel-group">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse4">Name of Project</a>
-                                  </h4>
-                            </div>
-                            <div id="collapse4" class="panel-collapse collapse">
-                                      <div class="panel-body">Project Description</div>
-                                      <div class="panel-footer">Name of Company</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                    <div class="panel-group">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse5">Name of Project</a>
-                                  </h4>
-                            </div>
-                            <div id="collapse5" class="panel-collapse collapse">
-                                      <div class="panel-body">Project Description</div>
-                                      <div class="panel-footer">Name of Company</div>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                    
-                <div class="clearfix visible-xs"></div>
-                
-                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                   <div class="panel-group">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">
-                                  <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse6">Name of Project</a>
-                                  </h4>
-                            </div>
-                            <div id="collapse6" class="panel-collapse collapse">
-                                      <div class="panel-body">Project Description</div>
-                                      <div class="panel-footer">Name of Company</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               
-            </div>
-        </div>
+                        <div id="collapse<?php
+	    	                    echo $p; ?>" class="panel-collapse collapse">
+	                        <div class="panel-body"> <?php
+	    	                    echo $projects[$p - 1]['Discription'] . "<br />";
+	    	                    echo "<b>" . $projects[$p - 1]['CompanyName'] . "</b>";?>                  
+	                        </div>
+
+	                        <div class="panel-footer" style='text-align: right;'> <?php
+	                    	echo htmlspecialchars_decode("<button type='button' style='margin-right: 60px;' class='btn btn-success btn-md' onclick= &quot; location.href='projectDetails.php?pid=" . $projects[$p - 1]['id_pk'] . "' &quot; >Details</button>") ?>
+	                    	
+			                </div>
+
+                    	</div>
+                	</div>
+            	</div>
+        	</div>
+             <?php
+	                $p++;
+                }
+            ?> 
+    	</div>
+   
+        
+            <?php
+            }
+            ?>
+    </div>  
+    
+    </div>
         
         <?php } ?>
     

@@ -47,6 +47,11 @@ class Project{
         return $ret;
     }
     
+    function  getCompletedProjects(){
+       $ret = $this->db->getCompletedProjects();
+       return $ret;
+    }
+    
 }
 
 ?>

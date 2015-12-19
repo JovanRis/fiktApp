@@ -323,6 +323,29 @@ class DB
         
     }
     
+    
+        function getCompletedProjects(){
+        $sql = "SELECT p.id_pk, p.ProjectName, p.Category, p.Discription, c.CompanyName, p.completed, (SELECT count( * )FROM SignUps WHERE fk_projectId = p.id_pk) as cnt
+                FROM `Project` p
+                LEFT JOIN `Company` c ON p.fk_CompanyID = c.id_pk
+                WHERE p.completed = 1 ";
+        
+        $result = $this->conn->query($sql);
+        $r = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r,$row);
+            }
+        } else {
+            return -1;
+        }
+
+        mysql_free_result($result);
+        
+        return $r;
+    }
+    
 
 
     ///////////////////////////////////////////////////////////////////////////
