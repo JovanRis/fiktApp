@@ -35,24 +35,27 @@
     
     <div id='main'>
     
-        <h2><?php echo $currentProject['ProjectName']; ?></h2>                      <?//detali za proekto ?>
-        <?php echo $currentProject['Category']; ?>
-        <p><?php echo $currentProject['Discription']; ?></p>    
+        <h2> <?php echo $currentProject['ProjectName'];?> </h2>
+        <div> <?php echo $currentProject['Category']; ?> </div>
+        <p> <?php echo $currentProject['Discription']; ?> </p>    
         
-        <?php echo $companyDetails['CompanyName'] ?>                                <?//detali za kompanijata so proekto ?>
-        <?php echo $companyDetails['CompanyDetails'] ?>
-        <img src="<?php echo $companyDetails['imgUrl'] ?>" alt="companyImg">
+        <div><?php echo $companyDetails['CompanyName'] ?></div>
+        <div><?php echo $companyDetails['CompanyDetails'] ?></div>
+        <div style = "height:200px; width: 350px;"><img src="<?php echo $companyDetails['imgUrl'] ?>" alt="companyImg" style="max-height:100%; max-width:100%;"></div>
         
         
-        
+        <div>
+        Currently signed up:
         <?php 
         
         foreach($currentProject['SignedUp'] as $student){                           //Prijaveni studenti
-            echo $student['firstname']." ".$student['lastname']."<br>";
+            echo "<div>".$student['firstname']." ".$student['lastname']."</div>";
         }
+        ?>
         
+        </div>
         
-        
+        <?php
         if(count($currentProject['SignedUp']) < $studentsPerProject){               //button za signup ako ima mesto
         ?>
             <button type='button' style='margin-right: 60px;' class='btn btn-success btn-md' onclick="location.href='?signup= <?php echo $projectID ?>'">Sign Up</button>
