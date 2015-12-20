@@ -30,6 +30,20 @@
     
     return true;
   }
+  
+    function showCompanyDetails(){
+        document.getElementById("firstnameItem").style.display = "none";
+        document.getElementById("lastnameItem").style.display = "none";
+        document.getElementById("companyDetailsItem").style.display = "block";
+        document.getElementById("companyImgItem").style.display = "block";
+    }
+  
+    function showStudentDetails(){
+        document.getElementById("firstnameItem").style.display = "block";
+        document.getElementById("lastnameItem").style.display = "block";
+        document.getElementById("companyDetailsItem").style.display = "none";
+        document.getElementById("companyImgItem").style.display = "none";
+    }
 
 </script>
 
@@ -40,11 +54,13 @@
         {
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
+            $comDetails = $_POST['companyDetails'];
+            $comImg = $_POST['companyImg'];
             $email = $_POST['email'];
             $username = $_POST['username'];
             $password = $_POST['password'];
             $radioCheck = $_POST['logtype'];
-            
+
             
             if($radioCheck == "student")
             {
@@ -62,7 +78,8 @@
             elseif ($radioCheck == "company") 
             {
                 $companyObj = new Company ();
-                if($companyObj-> register($username,md5($password),"deteils go here",$email,"imgUrl goes here"))
+                
+                if($companyObj-> register($username,md5($password),$comDetails,$email,$comImg))
                 {
                       echo "Company register successful";
                  }
@@ -71,49 +88,58 @@
                       echo "Company register error";
                  }
             } 
-            elseif($radioCheck == "university")
-            {
-                
-            }
         }
         else
         {
-            echo " <form id='registerForm' action='register.php' method='POST' onsubmit='return checkForm(this);'>
+        ?> <form id='registerForm' action='register.php' method='POST' onsubmit='return checkForm(this);'>
             <fieldset>
                 <legend>Register an account</legend>
                 <ol>
                 <li>
-                 
-                    <input type='radio' name='logtype' value='student' checked>Student
-                    <input type='radio' name='logtype' value='company'>Company
-                    <input type='radio' name='logtype' value='university'>University
-                   
+                    <input type='radio' name='logtype' value='student' checked onclick="showStudentDetails();">Student
+                    <input type='radio' name='logtype' value='company' onclick="showCompanyDetails();">Company
                 </li>
-                  <li>
-                    <label for='firstname'>Firstname:</label> 
+                <li id="firstnameItem">
+                    <label for='firstname'>Firstname:</label>
                     <input type='text' class='form-control' name='firstname' value='' id='firstname' />
                 </li>
-                 <li>
+                <li id="lastnameItem">
                     <label for='lastname'>Lastname:</label> 
                     <input type='text' class='form-control' name='lastname' value='' id='lastname' />
                 </li>
-                 <li>
+                
+                
+                
+                <li id="companyDetailsItem" style="display:none;">
+                    <label for='companyDetails'>Company details:</label> 
+                    <input type='text' class='form-control' name='companyDetails' value='' id='companyDetails' />
+                </li>
+                <li id="companyImgItem" style="display:none;">
+                    <label for='companyImg'>Company logo url:</label> 
+                    <input type='text' class='form-control' name='companyImg' value='' id='companyImg' />
+                </li>
+                
+                
+                
+                <li>
                     <label for='email'>Email:</label> 
                     <input type='text' class='form-control' name='email' value='' id='email' />
                 </li>
-                    <li>
-                        <label for='username'>Username:</label> 
-                        <input type='text' class='form-control' name='username' value='' id='username' />
-                    </li>
-                    <li>
-                        <label for='password'>Password:</label>
-                        <input type='password' class='form-control' name='password' value='' id='password' />
-                    </li>
+                <li>
+                    <label for='username'>Username:</label> 
+                    <input type='text' class='form-control' name='username' value='' id='username' />
+                </li>
+                <li>
+                    <label for='password'>Password:</label>
+                    <input type='password' class='form-control' name='password' value='' id='password' />
+                </li>
                 </ol>
                 <input type='submit' class='btn btn-default' name='submit' value='Register' />
                
             </fieldset>
-        </form>";
+        </form>
+        
+        <?php
         }
         ?>
         
