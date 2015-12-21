@@ -270,6 +270,18 @@ class DB
         }
     }
     
+    function deleteStudentFromSignups($studentID){
+        $sql = "DELETE FROM `SignUps` WHERE fk_studentId = '".$studentID."'";
+            if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
+    }
+    
+    
+    
     public function getInactiveProjects(){
         
         $sql = "SELECT * from `Project` WHERE `active` = '0' ";

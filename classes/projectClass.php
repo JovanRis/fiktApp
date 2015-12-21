@@ -19,8 +19,9 @@ class Project{
     }
     
     function signUpForProject($project_id,$student_id){
-                
+        $this->db->deleteStudentFromSignups($student_id);       
         return $this->db->signUpForProject($project_id,$student_id);
+
     }
     
     function createProject($projectName,$category,$discription,$companyID)
