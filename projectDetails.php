@@ -59,7 +59,7 @@
         </div>
         
         <?php
-        if(count($currentProject['SignedUp']) < $studentsPerProject){               //button za signup ako ima mesto
+        if(count($currentProject['SignedUp']) < $studentsPerProject && $currentProject['completed'] == 0){               //button za signup ako ima mesto
         ?>
             <button type='button' style='margin-right: 60px;' class='btn btn-success btn-md' onclick="location.href='?signup= <?php echo $projectID ?>'">Sign Up</button>
        <?php 

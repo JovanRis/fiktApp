@@ -276,7 +276,7 @@ class DB
         $sql = "SELECT p.id_pk, p.ProjectName, p.Category, p.Discription, c.CompanyName, (SELECT count( * )FROM SignUps WHERE fk_projectId = p.id_pk) as cnt
                 FROM `Project` p
                 LEFT JOIN `Company` c ON p.fk_CompanyID = c.id_pk
-                WHERE `Category` = '".$Category."' AND p.active = 1 ";
+                WHERE `Category` = '".$Category."' AND p.active = 1 and p.completed = 0 ";
         
         $result = $this->conn->query($sql);
         $r = array();
