@@ -31,19 +31,23 @@
     //print_r ($companyDetails);
     
     ?>
-    
+   
     
     <div id='main'>
     
-        <h2> <?php echo $currentProject['ProjectName'];?> </h2>
-        <div> <?php echo $currentProject['Category']; ?> </div>
-        <p> <?php echo $currentProject['Discription']; ?> </p>    
-        
-        <div><?php echo $companyDetails['CompanyName'] ?></div>
-        <div><?php echo $companyDetails['CompanyDetails'] ?></div>
-        <div style = "height:200px; width: 350px;"><img src="<?php echo $companyDetails['imgUrl'] ?>" alt="companyImg" style="max-height:100%; max-width:100%;"></div>
-        
-        
+     <div class="panel panel-success">
+       <div class="panel-heading"> <?php echo $currentProject['ProjectName'];?> </div>
+       <div class="panel-body">
+       
+          <?php echo $currentProject['Category']; ?> <br>
+          <?php echo $currentProject['Discription']; ?> <br>   
+          <?php echo $companyDetails['CompanyName'] ?> <br>
+          <?php echo $companyDetails['CompanyDetails'] ?> <br>
+          <div style = "height:200px; width: 350px;"><img src="<?php echo $companyDetails['imgUrl'] ?>" alt="companyImg" style="max-height:100%; max-width:100%;"></div>
+      
+        </div>
+      </div>
+      
         <div>
         Currently signed up:
         <?php 
@@ -52,7 +56,6 @@
             echo "<div>".$student['firstname']." ".$student['lastname']."</div>";
         }
         ?>
-        
         </div>
         
         <?php

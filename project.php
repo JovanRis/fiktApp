@@ -86,7 +86,7 @@
 
 	                        <div class="panel-footer" style='text-align: right;'> <?php
 	                    	echo htmlspecialchars_decode("<button type='button' style='margin-right: 60px;' class='btn btn-success btn-md' onclick= &quot; location.href='projectDetails.php?pid=" . $projects[$p - 1]['id_pk'] . "' &quot; >Details</button>") ?>
-	                    	<span>Spots left: <?php echo $studentsPerProject-$projects[$p - 1]['cnt'] ?> </span>
+	                    	<span>Spots left: </span> <span class="badge"><?php echo $studentsPerProject-$projects[$p - 1]['cnt'] ?> </span>
 			                </div>
 
                     	</div>
