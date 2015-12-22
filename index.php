@@ -15,14 +15,14 @@
             
             foreach($projects as $project){
                 ?>
-                <div>
-                    <div><h3><?php echo $project['ProjectName'] ?></h3></div>
-                    <div><p><?php echo $project['Discription'] ?></p></div>
+                <div class="panel panel-success">
+                    <div  class="panel-heading"><?php echo $project['ProjectName'] ?></div>
+                    <div class="panel-body"><?php echo $project['Discription'] ?></div>
                     <div>
                     <?php
                     foreach($project['SignedUp'] as $colegue){
                         ?>
-                            <div> <?php echo $colegue['firstname']." ".$colegue['lastname']." ".$colegue['email']; ?> </div>
+                            <div class="panel-footer"> <?php echo $colegue['firstname']." ".$colegue['lastname']." ".$colegue['email']; ?> </div>
                         <?php
                     }
                     ?>

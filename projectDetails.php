@@ -53,7 +53,7 @@
         <?php 
         
         foreach($currentProject['SignedUp'] as $student){                           //Prijaveni studenti
-            echo "<div>".$student['firstname']." ".$student['lastname']."</div>";
+            echo "<div class='panel-footer' >".$student['firstname']." ".$student['lastname']."</div>";
         }
         ?>
         </div>
