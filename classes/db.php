@@ -12,6 +12,11 @@ class DB
         if ($this->conn->connect_error) {
             die("Connection failed: " . $this->conn->connect_error);
         }
+        
+    if (!mysqli_set_charset($this->conn, "utf8")) {
+        printf("Error loading character set utf8: %s\n", mysqli_error($this->conn));
+        exit();
+    }
 
     }
     
@@ -33,6 +38,9 @@ class DB
     
     function loginStudent($user,$pwhash)
     {
+        $user = $this->conn->real_escape_string($user);
+        $pwhash = $this->conn->real_escape_string($pwhash);
+        
         $sql = "SELECT *
                 FROM `Student`
                 WHERE `Username` LIKE '".$user."'";
@@ -53,6 +61,12 @@ class DB
     
     function registerStudent($user,$pwhash,$firstname, $lastname, $email)
     {
+        $user = $this->conn->real_escape_string($user);
+        $pwhash = $this->conn->real_escape_string($pwhash);
+        $firstname = $this->conn->real_escape_string($firstname);
+        $lastname = $this->conn->real_escape_string($lastname);
+        $email = $this->conn->real_escape_string($email);
+        
         $sql = "INSERT INTO `Student`(`Username`, `pwHash`, `firstname`, `lastname`, `email`) VALUES ('".$user."','".$pwhash."','".$firstname."','".$lastname."','".$email."')";
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -63,6 +77,9 @@ class DB
     }
     
     function getStudentProjects($studentID){
+        
+        $studentID = $this->conn->real_escape_string($studentID);
+        
         $sql = "SELECT `id_pk`
                 FROM Project p LEFT JOIN SignUps su ON p.id_pk = su.fk_projectId
                 WHERE su.fk_studentId = '".$studentID."'";
@@ -97,6 +114,9 @@ class DB
     
     function loginCompany($user,$pwhash)
     {
+        $user = $this->conn->real_escape_string($user);
+        $pwhash = $this->conn->real_escape_string($pwhash);
+        
         $sql = "SELECT *
                 FROM `Company`
                 WHERE `CompanyName` = '".$user."'";
@@ -119,6 +139,12 @@ class DB
     
         function registerCompany($user,$pwhash,$details,$email,$imgUrl)
     {
+        $user = $this->conn->real_escape_string($user);
+        $pwhash = $this->conn->real_escape_string($pwhash);
+        $details = $this->conn->real_escape_string($details);
+        $email = $this->conn->real_escape_string($email);
+        $imgUrl = $this->conn->real_escape_string($imgUrl);
+        
         $sql = "INSERT INTO `Company`(`CompanyName`, `CompanyPass`, `CompanyDetails`, `email`, `imgUrl`) VALUES ('".$user."','".$pwhash."','".$details."','".$email."','".$imgUrl."')";
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -130,6 +156,11 @@ class DB
     
     function createProject($projectName,$category,$discription,$companyID)
     {
+        $projectName = $this->conn->real_escape_string($projectName);
+        $category = $this->conn->real_escape_string($category);
+        $discription = $this->conn->real_escape_string($discription);
+        $companyID = $this->conn->real_escape_string($companyID);
+        
         $sql = "INSERT INTO `Project`(`ProjectName`, `Category`, `Discription`, `fk_CompanyID`) VALUES ('".$projectName."','".$category."','".$discription."','".$companyID."')";
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -140,7 +171,7 @@ class DB
     }
     
     public function getInactiveCompanies(){
-    
+        
         
         $sql = "SELECT * from `Company` WHERE `active` = '0' ";
         
@@ -160,6 +191,7 @@ class DB
     }
     
     public function checkIfApproved($companyID){
+        $companyID = $this->conn->real_escape_string($companyID);
         
         $sql = "SELECT `active` FROM `Company` WHERE `id_pk` = '".$companyID."'";
         $result = $this->conn->query($sql);
@@ -174,6 +206,7 @@ class DB
     }
     
         public function getCompanyInfo($companyID){
+            $companyID = $this->conn->real_escape_string($companyID);
         
         $sql = "SELECT `CompanyName`,`CompanyDetails`,`imgUrl` FROM `Company` WHERE `id_pk` = '".$companyID."'";
         $result = $this->conn->query($sql);
@@ -189,6 +222,7 @@ class DB
     }
     
     function getCompanyProjects($companyID){
+        $companyID = $this->conn->real_escape_string($companyID);
         $sql = "SELECT `id_pk`
                 FROM Project p 
                 WHERE p.fk_companyID = '".$companyID."'";
@@ -238,6 +272,7 @@ class DB
     }
     
     function getProjectByCategory($Category){
+        $Category = $this->conn->real_escape_string($Category);
         $sql = "SELECT p.id_pk, p.ProjectName, p.Category, p.Discription, c.CompanyName, (SELECT count( * )FROM SignUps WHERE fk_projectId = p.id_pk) as cnt
                 FROM `Project` p
                 LEFT JOIN `Company` c ON p.fk_CompanyID = c.id_pk
@@ -260,6 +295,8 @@ class DB
     }
     
     function signUpForProject($project_id,$student_id){
+        $project_id = $this->conn->real_escape_string($project_id);
+        $student_id = $this->conn->real_escape_string($student_id);
         $sql = "INSERT INTO `SignUps`(`fk_projectId`, `fk_studentId`) VALUES ('".$project_id."','".$student_id."')";
         
         if ($this->conn->query($sql) === TRUE) {
@@ -271,6 +308,7 @@ class DB
     }
     
     function deleteStudentFromSignups($studentID){
+        $studentID = $this->conn->real_escape_string($studentID);
         $sql = "DELETE FROM `SignUps` WHERE fk_studentId = '".$studentID."'";
             if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -302,6 +340,7 @@ class DB
     }
     
     function getprojectByID($projectID){
+        $projectID = $this->conn->real_escape_string($projectID);
         $sql = "SELECT * from `Project` Where `id_pk` = '".$projectID."'";
         
         $result = $this->conn->query($sql);
@@ -360,12 +399,16 @@ class DB
     
 
 
+
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Admin Part///////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 
 function loginAdmin($user,$pwhash)
     {
+        $user = $this->conn->real_escape_string($user);
+        $pwhash = $this->conn->real_escape_string($pwhash);
+        
         $sql = "SELECT *
                 FROM `Admin`
                 WHERE `Username` LIKE '".$user."'";
@@ -385,6 +428,7 @@ function loginAdmin($user,$pwhash)
     }
     
     function approveCompany($companyID){
+        $companyID = $this->conn->real_escape_string($companyID);
         $sql = "UPDATE `fiktApp`.`Company` SET `active` = '1' WHERE `Company`.`id_pk` = '".$companyID."'";
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -395,6 +439,7 @@ function loginAdmin($user,$pwhash)
     }
     
     function approveProject($projectID){
+        $projectID = $this->conn->real_escape_string($projectID);
         $sql = "UPDATE `fiktApp`.`Project` SET `active` = '1' WHERE `Project`.`id_pk` = '".$projectID."'";
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -405,6 +450,7 @@ function loginAdmin($user,$pwhash)
     }
     
     function finishProject($projectID){
+        $projectID = $this->conn->real_escape_string($projectID);
         $sql = "UPDATE `Project` SET `completed` = '1' WHERE `Project`.`id_pk` = '".$projectID."'";
         if ($this->conn->query($sql) === TRUE) {
             return true;
@@ -414,13 +460,17 @@ function loginAdmin($user,$pwhash)
         }
     }
     
-    
+
+
     ///////////////////////////////////////////////////////////////////////////
     //////////////////////////////Session Part/////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////
 
     function createSession($sessionName,$startDate, $endDate)
     {
+        $sessionName = $this->conn->real_escape_string($sessionName);
+        $startDate = $this->conn->real_escape_string($startDate);
+        $endDate = $this->conn->real_escape_string($endDate);
         echo $sessionName; echo "<br>";
         echo $startDate; echo "<br>";
         echo $endDate; echo "<br>";
