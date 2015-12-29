@@ -53,6 +53,11 @@ class Project{
        return $ret;
     }
     
+    function addComment($projectID,$comment,$clientTime){
+        $ret = $this->db->addProjectComment($projectID,$comment,$clientTime);
+        return $ret;
+    }
+    
 }
 
 ?>

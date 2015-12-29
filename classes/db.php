@@ -368,8 +368,23 @@ class DB
         }
         
         
+        $sql = "SELECT * from `ProjectComments` WHERE `fk_ProjectID` = '".$projectID."'";
+        $result = $this->conn->query($sql);
+        $r2 = array();
+        if ($result->num_rows > 0) {
+        // output data of each row
+            while($row = $result->fetch_assoc()) {
+            array_push($r2,$row);
+            }
+        } else {
+            $r1 = "There are no comments";
+        }
+        
+        
+        
         $r = $r[0];
         $r['SignedUp'] = $r1;
+        $r['comments'] = $r2;
         return $r;
         
     }
@@ -395,6 +410,21 @@ class DB
         mysql_free_result($result);
         
         return $r;
+    }
+    
+    function addProjectComment($projectID,$comment,$clientTime){
+        $comment = $this->conn->real_escape_string($comment);
+        $projectID = $this->conn->real_escape_string($projectID);
+        $clientTime = $this->conn->real_escape_string($clientTime);
+        
+        $sql = "INSERT INTO `ProjectComments`(`fk_ProjectID`, `Date_Created`, `Comment`) VALUES ('".$projectID."','".$clientTime."' ,'".$comment."')";
+        
+        if ($this->conn->query($sql) === TRUE) {
+            return true;
+        } else {
+            echo "Error: " . $sql . "<br>" . $this->conn->error;
+            return false;
+        }
     }
     
 

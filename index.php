@@ -27,6 +27,17 @@
                     }
                     ?>
                     </div>
+                    
+                    <div>
+                    Comments:
+                    <?php 
+                    
+                    foreach($project['comments'] as $comment){                           //komentari od kompanija
+                        echo "<div class='panel-footer' >".$comment['Comment']." ".$comment['Date_Created']."</div>";
+                    }
+                    ?>
+                    </div>
+                    
                 </div>
                 <?php
             }
