@@ -85,7 +85,6 @@
     <div id='main' class = 'container'>
       <div class="col-md-12">
     <?php
-
         require_once("classes/projectClass.php");
            
         $projectObj = new Project();
@@ -93,7 +92,6 @@
     
     $projects = $projectObj->getCompletedProjects();
     //print_r($projects);
-
     ?>
     
         <div class="well">

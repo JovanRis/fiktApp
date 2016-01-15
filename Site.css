@@ -19,7 +19,7 @@ header{
     background-color: white;
 }
 
-header, footer, hgroup
+header, hgroup
 nav, section {
     display: block;
 }
@@ -47,7 +47,7 @@ nav, section {
 
 #main {
    
-	padding: 30px 0px 50px;
+
     margin-left:  auto;
     margin-right: auto;
     width: 80%;
@@ -56,38 +56,16 @@ nav, section {
 }
 
    
-footer {
+footer { 
+   
     background-color: #E2E2E2;
-    clear: both;
-    font-size: 0.8em;
-    height: 50px;
-    margin-top: 0px;
-    position: relative;
-    text-align: center;         
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 20px;
+    width: 100%;
 }
 
-footer .footer-wrapper {
-    margin: 0;
-    padding:  3px 20px;
-}
-
-/*site title
-----------------------------------------------------------*/
-/*header h1.site-title a {
-    
-
-    background: url(fict_logo.png); 
-    width:147;
-    height:67;
-    margin-left:27px;
-}
-
-.site-title a, .site-title a:hover, .site-title a:active {
- 
-    color: #449d44;
-    outline: none;
-    text-decoration: none;
-}*/
 .site-logo img {
     margin-left: 24%;
     margin-top:5%;
@@ -158,29 +136,7 @@ nav.navbar.navbar-default {
 a.btn.btn-success.btn-lg {
     color: white;
 }
-/* page elements
-----------------------------------------------------------*/
 
-/* Navigation */
-/*.navigation {
-    border-top: 5px solid rgb(226, 226, 226);
-    
-    
-    margin: 0;
-    padding:  0;
-    
-    display: table;
-    width: 100%;
-    
-    background-color: white;
-  
-}
-.navigation a {
-    
-    color: #E2E2E2;
-}
-*/
-/* page titles */
 hgroup.title {
     margin-bottom: 10px;
 }
@@ -294,11 +250,8 @@ ul#social li {
   .carousel-caption h3 {
       color: #fff !important;
   }
-  @media (max-width: 600px) {
-    .carousel-caption {
-      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-    }
-  }
+  
+ 
   .bg-1 {
       background: #2d2d30;
       color: #bdbdbd;

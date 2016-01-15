@@ -1,11 +1,8 @@
-
-<footer>
-            <div class="footer-wrapper">
-                <div class="float-left">
-                    <p>&copy; Demola-FIKT</p>
-                </div>
-               
+        <footer>
+        
+             <div>
+               &copy; Demola-FIKT More information: <a href="http://www.fikt.uklo.edu.mk/">contact@fikt.edu.mk</a>.
             </div>
         </footer>
-    </body>
-</html>
+     </body>
+ </html>
